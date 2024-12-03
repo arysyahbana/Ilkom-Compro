@@ -51,10 +51,10 @@
                 <div class="collapse" id="sidebarEcommerce">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="apps-ecommerce-products.html">Data Fakultas</a>
+                            <a href="{{ route('fakultas.index') }}">Data Fakultas</a>
                         </li>
                         <li>
-                            <a href="apps-ecommerce-products-details.html">Galeri Ilmu Komunikasi</a>
+                            <a href="{{ route('galeriilkom.index') }}">Galeri Ilmu Komunikasi</a>
                         </li>
                     </ul>
                 </div>
@@ -75,11 +75,16 @@
                             <a href="{{ route('visimisi.index') }}">Visi & Misi</a>
                         </li>
                         <li>
-                            <a href="apps-email-read.html">Struktur Organisasi</a>
+                            <a href="{{ route('strukturorganisasi.manage') }}">Struktur Organisasi</a>
                         </li>
                         <li>
                             <a href="{{ route('dosen.index') }}">Dosen</a>
                         </li>
+                        @foreach ($tentangSubmenu as $tentang)
+                            <li>
+                                <a href="{{ $tentang->link ?? '' }}" target="_blank">{{ $tentang->judul ?? '' }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </li>
@@ -115,6 +120,11 @@
                         <li>
                             <a href="{{ route('programsarjana.index') }}">Program Sarjana</a>
                         </li>
+                        @foreach ($akademikSubmenu as $akademik)
+                            <li>
+                                <a href="{{ $akademik->link ?? '' }}" target="_blank">{{ $akademik->judul ?? '' }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </li>
@@ -135,11 +145,16 @@
                             <a href="apps-tasks-details.html">Agenda</a>
                         </li>
                         <li>
-                            <a href="apps-kanban.html">Berita</a>
+                            <a href="apps-kanban.html">Postingan Berita</a>
                         </li>
                         <li>
                             <a href="apps-kanban.html">Publikasi Dosen</a>
                         </li>
+                        @foreach ($beritaSubmenu as $berita)
+                            <li>
+                                <a href="{{ $berita->link ?? '' }}" target="_blank">{{ $berita->judul ?? '' }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </li>
@@ -159,6 +174,12 @@
                         <li>
                             <a href="apps-tasks-details.html">Kemahasiswaan</a>
                         </li>
+                        @foreach ($kemahasiswaanSubmenu as $kemahasiswaan)
+                            <li>
+                                <a href="{{ $kemahasiswaan->link ?? '' }}"
+                                    target="_blank">{{ $kemahasiswaan->judul ?? '' }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </li>
@@ -692,7 +713,7 @@
             var tentangLink = document.getElementById('tentangLink');
 
             // Cek jika URL mengarah ke halaman 'visimisi.index'
-            if (window.location.href.includes('{{ route('visimisi.index') }}')) {
+            if (window.location.href.includes('{{ route('tentang.index') }}')) {
                 // Buka collapse secara otomatis
                 var collapseInstance = new bootstrap.Collapse(collapseElement, {
                     toggle: true // Toggle collapse dan buka
@@ -710,14 +731,14 @@
                 event.preventDefault(); // Mencegah aksi klik default
 
                 // Arahkan ke halaman visimisi.index
-                window.location.href = '{{ route('visimisi.index') }}';
+                window.location.href = '{{ route('tentang.index') }}';
 
                 // Buka collapse setelah beberapa saat agar navigasi tidak terganggu
                 setTimeout(function() {
                     var collapseInstance = new bootstrap.Collapse(collapseElement, {
                         toggle: true
                     });
-                }, 300); // Sesuaikan durasi jika perlu
+                }, 100); // Sesuaikan durasi jika perlu
             });
         });
     </script>

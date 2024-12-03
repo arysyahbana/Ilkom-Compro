@@ -11,6 +11,7 @@ class Dosen extends Model
 
     protected $fillable = [
         'nama',
+        'image',
         'nip',
         'nidn',
         'tempat_lahir',
@@ -30,6 +31,7 @@ class Dosen extends Model
 
     public static $rules = [
         'nama' => 'required|string|max:255',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         'nip' => 'required|string|max:255',
         'nidn' => 'required|string|max:255',
         'tempat_lahir' => 'required|string|max:255',

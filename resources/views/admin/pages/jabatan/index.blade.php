@@ -30,7 +30,7 @@
                                                 <a href="{{ route('jabatan.edit', $item->id) }}"
                                                     class="btn btn-sm btn-primary">Edit</a>
                                                 <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#hapusjabatan{{ $item->id }}"">Hapus</a>
+                                                    data-bs-target="#hapusjabatan{{ $item->id }}">Hapus</a>
                                             </td>
                                         </tr>
 

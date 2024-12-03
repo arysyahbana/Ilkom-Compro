@@ -228,8 +228,18 @@
             @if (Route::is('dashboard'))
                 <i class="uil-home-alt fs-3"></i>
                 <span>Dashboards</span>
-            @else
-                asd
+            @elseif (Route::is('galeriilkom.*'))
+                <i class="uil-home fs-3"></i>
+                <span>Galeri Ilmu Komunikasi</span>
+            @elseif (Route::is('fakultas.*'))
+                <i class="uil-home fs-3"></i>
+                <span>Data Fakultas</span>
+            @elseif (Route::is('tentang.*'))
+                <i class="uil-info-circle fs-3"></i>
+                <span>Tentang</span>
+            @elseif (Route::is('visimisi.*'))
+                <i class="uil-info-circle fs-3"></i>
+                <span>Visi & Misi</span>
             @endif
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\GlobalFunction;
 use App\Models\BidangKajian;
 use App\Models\Dosen;
 use App\Models\Golongan;
@@ -31,8 +32,17 @@ class DosenController extends MasterController
 
     public function store(Request $request)
     {
+        $imagePath = 'dosen';
+        $validated = $request->validate($this->model::$rules);
         $dosen = new Dosen();
+
+        if ($request->hasFile('image')) {
+            $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
+            $validated['image'] = $imageName;
+        }
+
         $dosen->nama = $request->input('nama');
+        $dosen->image = $imageName;
         $dosen->nip = $request->input('nip');
         $dosen->nidn = $request->input('nidn');
         $dosen->tempat_lahir = $request->input('tempat_lahir');
@@ -80,6 +90,7 @@ class DosenController extends MasterController
 
     public function edit($id)
     {
+
         $item = Dosen::findOrFail($id);
         $pangkats = Pangkat::all();
         $golongans = Golongan::all();
@@ -110,8 +121,23 @@ class DosenController extends MasterController
 
     public function update(Request $request, $id)
     {
+        $imagePath = 'dosen';
+        $validated = $request->validate($this->model::$rules);
         $dosen = Dosen::findOrFail($id);
         $dosen->nama = $request->input('nama');
+
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($dosen->image) {
+                GlobalFunction::deleteImage($dosen->image, $imagePath);
+            }
+
+            // Simpan gambar baru
+            $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
+            $validated['image'] = $imageName;
+            $dosen->image = $imageName;
+        }
+
         $dosen->nip = $request->input('nip');
         $dosen->nidn = $request->input('nidn');
         $dosen->tempat_lahir = $request->input('tempat_lahir');
