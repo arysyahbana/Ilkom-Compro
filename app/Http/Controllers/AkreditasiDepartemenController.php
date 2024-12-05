@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\GlobalFunction;
-use App\Models\Kurikulum;
+use App\Models\AkreditasiDepartemen;
 use Illuminate\Http\Request;
 
-class KurikulumController extends MasterController
+class AkreditasiDepartemenController extends MasterController
 {
     public function __construct()
     {
-        $this->model = Kurikulum::class;
-        $this->viewPath = 'admin.pages.kurikulum';
+        $this->model = AkreditasiDepartemen::class;
+        $this->viewPath = 'admin.pages.akreditasidepartemen';
     }
 
     public function create()
@@ -36,51 +36,51 @@ class KurikulumController extends MasterController
 
     public function manage()
     {
-        $dataKurikulum = Kurikulum::first();
-        if ($dataKurikulum) {
-            return view('admin.pages.kurikulum.edit', compact('dataKurikulum'));
+        $dataAkreditasiDepartemen = AkreditasiDepartemen::first();
+        if ($dataAkreditasiDepartemen) {
+            return view('admin.pages.akreditasidepartemen.edit', compact('dataAkreditasiDepartemen'));
         } else {
-            return view('admin.pages.kurikulum.create');
+            return view('admin.pages.akreditasidepartemen.create');
         }
     }
 
     public function manageStore(Request $request)
     {
-        $imagePath = 'kurikulum';
+        $imagePath = 'akreditasidepartemen';
         $validated = $request->validate($this->model::$rules);
         if ($request->hasFile('image')) {
             $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
             $validated['image'] = $imageName;
         }
         $this->model::create($validated);
-        return redirect()->route('kurikulum.manage')->with('success', 'Data created successfully');
+        return redirect()->route('akreditasidepartemen.manage')->with('success', 'Data created successfully');
     }
 
     public function edit($id)
     {
-        $dataKurikulum = Kurikulum::findOrFail($id);
-        return view('admin.pages.kurikulum.edit', compact('dataKurikulum'));
+        $dataAkreditasiDepartemen = AkreditasiDepartemen::findOrFail($id);
+        return view('admin.pages.akreditasidepartemen.edit', compact('dataAkreditasiDepartemen'));
     }
 
     public function manageUpdate(Request $request, $id)
     {
-        $dataKurikulum = Kurikulum::findOrFail($id);
+        $dataAkreditasiDepartemen = AkreditasiDepartemen::findOrFail($id);
 
         $validated = $request->validate($this->model::$rules);
 
-        $imagePath = 'kurikulum';
+        $imagePath = 'akreditasidepartemen';
 
         if ($request->hasFile('image')) {
-            if ($dataKurikulum->image) {
-                GlobalFunction::deleteImage($dataKurikulum->image, $imagePath);
+            if ($dataAkreditasiDepartemen->image) {
+                GlobalFunction::deleteImage($dataAkreditasiDepartemen->image, $imagePath);
             }
 
             $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
             $validated['image'] = $imageName;
         }
 
-        $dataKurikulum->update($validated);
+        $dataAkreditasiDepartemen->update($validated);
 
-        return redirect()->route('kurikulum.edit', $id)->with('success', 'Data updated successfully');
+        return redirect()->route('akreditasidepartemen.edit', $id)->with('success', 'Data updated successfully');
     }
 }

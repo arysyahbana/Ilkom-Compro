@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('program_sarjanas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('link_pdf');
+            $table->string('image');
+            $table->string('judul');
+            $table->text('isi_halaman');
             $table->timestamps();
         });
     }

@@ -46,6 +46,11 @@ class MasterController extends Controller
             $validated['image'] = $imageName; // Simpan nama file ke database
         }
 
+        if ($request->hasFile('pdf')) {
+            $pdfName = GlobalFunction::savePDF($request->file('pdf'), uniqid(), $imagePath);
+            $validated['pdf'] = $pdfName; // Simpan nama file ke database
+        }
+
         $this->model::create($validated);
         return redirect()->route(last(explode('.', $this->viewPath)) . '.index')->with('success', 'Data created successfully');
     }
@@ -75,6 +80,15 @@ class MasterController extends Controller
             $validated['image'] = $imageName;
         }
 
+        if ($request->hasFile('pdf')) {
+            if ($item->pdf) {
+                GlobalFunction::deletePDF($item->pdf, $imagePath);
+            }
+
+            $pdfName = GlobalFunction::savePDF($request->file('pdf'), uniqid(), $imagePath);
+            $validated['pdf'] = $pdfName;
+        }
+
         $item->update($validated);
         return redirect()->route(last(explode('.', $this->viewPath)) . '.index')->with('success', 'Data updated successfully');
     }
@@ -87,6 +101,10 @@ class MasterController extends Controller
 
         if ($item->image) {
             GlobalFunction::deleteImage($item->image, $imagePath);
+        }
+
+        if ($item->pdf) {
+            GlobalFunction::deletePDF($item->pdf, $imagePath);
         }
 
         $item->delete();

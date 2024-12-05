@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kurikulums', function (Blueprint $table) {
+        Schema::create('kalender_akademiks', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->text('link');
             $table->string('judul');
-            $table->text('isi_halaman');
+            $table->string('pdf');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kurikulums');
+        Schema::dropIfExists('kalender_akademiks');
     }
 };

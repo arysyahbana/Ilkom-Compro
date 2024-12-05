@@ -1,28 +1,38 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Program Sarjana | SIMT')
+@section('title', 'Program Sarjana | SIMT')
 
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
+            <h4 class="">Gambar Program Sarjana</h4>
+            <img src="{{ asset('dist/assets/img/programsarjana/' . $dataProgramSarjana->image ?? '') }}" alt=""
+                class="img-fluid img-thumbnail mb-3" style="max-width: 800px">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Edit Program Sarjana</h3>
                     <div class="tab-content mt-3">
-                        <form action="{{ route('programsarjana.update', $item->id) }}" method="POST">
+                        <form action="{{ route('programsarjana.update.manage', $dataProgramSarjana->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" id="nama"
-                                    value="{{ $item->nama ?? '' }}">
+                                <label for="formFile" class="form-label fw-bold">Gambar</label>
+                                <input class="form-control" type="file" id="formFile" name="image">
                             </div>
                             <div class="mb-3">
-                                <label for="link_pdf" class="form-label">Link Pdf</label>
-                                <input type="link" name="link_pdf" class="form-control" id="link_pdf"
-                                    value="{{ $item->link_pdf ?? '' }}">
+                                <label for="judul" class="form-label fw-bold">Judul</label>
+                                <input class="form-control" type="text" id="judul" name="judul"
+                                    value="{{ $dataProgramSarjana->judul ?? '' }}">
                             </div>
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <div class="mb-3">
+                                <label for="isi_halaman" class="form-label fw-bold">Isi Halaman</label>
+                                <textarea id="isi_halaman" rows="10" name="isi_halaman" class="form-control">
+                                    {{ $dataProgramSarjana->isi_halaman ?? '' }}
+                                </textarea>
+                            </div>
+
+                            <button type="submit" class="btn form-control text-light"
+                                style="background-color: #47245C; border-radius: 0.5rem">Perbarui</button>
                         </form>
                     </div>
 

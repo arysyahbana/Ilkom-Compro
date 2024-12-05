@@ -10,12 +10,14 @@ class ProgramSarjana extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
-        'link_pdf',
+        'image',
+        'judul',
+        'isi_halaman',
     ];
 
     public static $rules = [
-        'nama' => 'required|string|max:255',
-        'link_pdf' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'judul' => 'required|string|max:255',
+        'isi_halaman' => 'required|string',
     ];
 }

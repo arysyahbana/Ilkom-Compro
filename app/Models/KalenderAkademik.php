@@ -5,21 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kurikulum extends Model
+class KalenderAkademik extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'image',
-        'link',
         'judul',
-        'isi_halaman',
+        'pdf',
     ];
 
     public static $rules = [
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'link' => 'required|string',
         'judul' => 'required|string|max:255',
-        'isi_halaman' => 'required|string',
+        'pdf' => 'required|file|mimes:pdf|max:5120',
     ];
 }

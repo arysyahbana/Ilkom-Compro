@@ -100,25 +100,25 @@
                 <div class="collapse" id="sidebarProjects">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('kurikulum.index') }}">Kurikulum</a>
+                            <a href="{{ route('kurikulum.manage') }}">Kurikulum</a>
                         </li>
                         <li>
-                            <a href="apps-projects-details.html">Akreditasi Departemen</a>
+                            <a href="{{ route('akreditasidepartemen.manage') }}">Akreditasi Departemen</a>
                         </li>
                         <li>
                             <a href="apps-projects-gantt.html">SOP</a>
                         </li>
                         <li>
-                            <a href="apps-projects-add.html">Distribusi Mata Kuliah</a>
+                            <a href="{{ route('sinopsismatkul.manage') }}">Sinopsis Mata Kuliah</a>
                         </li>
                         <li>
-                            <a href="apps-projects-add.html">Kalender Akademik</a>
+                            <a href="{{ route('kalenderakademik.manage') }}">Kalender Akademik</a>
                         </li>
                         <li>
                             <a href="{{ route('konsentrasipenjurusan.index') }}">Konsentrasi Penjurusan</a>
                         </li>
                         <li>
-                            <a href="{{ route('programsarjana.index') }}">Program Sarjana</a>
+                            <a href="{{ route('programsarjana.manage') }}">Program Sarjana</a>
                         </li>
                         @foreach ($akademikSubmenu as $akademik)
                             <li>
@@ -139,7 +139,7 @@
                 <div class="collapse" id="sidebarTasks">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="apps-tasks.html">Pengumuman</a>
+                            <a href="{{ route('pengumuman.index') }}">Pengumuman</a>
                         </li>
                         <li>
                             <a href="apps-tasks-details.html">Agenda</a>
