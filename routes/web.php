@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\AkreditasiDepartemenController;
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BidangKajianController;
 use App\Http\Controllers\DosenController;
@@ -16,11 +18,15 @@ use App\Http\Controllers\KonsentrasiPenjurusanController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\PangkatController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PostinganBeritaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramSarjanaController;
+use App\Http\Controllers\PublikasiDosenController;
 use App\Http\Controllers\SinopsisMatkulController;
 use App\Http\Controllers\StrukturOrganisasiController;
+use App\Http\Controllers\SubKemahasiswaanController;
 use App\Http\Controllers\TentangController;
+use App\Http\Controllers\UnduhanController;
 use App\Http\Controllers\VisiMisiController;
 use Illuminate\Support\Facades\Route;
 
@@ -193,6 +199,54 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/store', [PengumumanController::class, 'store'])->name('pengumuman.store');
         Route::put('/update/{id}', [PengumumanController::class, 'update'])->name('pengumuman.update');
         Route::delete('/destroy/{id}', [PengumumanController::class, 'destroy'])->name('pengumuman.destroy');
+    });
+    Route::prefix('agenda')->group(function () {
+        Route::get('/index', [AgendaController::class, 'index'])->name('agenda.index');
+        Route::get('/show/{id}', [AgendaController::class, 'show'])->name('agenda.show');
+        Route::get('/create', [AgendaController::class, 'create'])->name('agenda.create');
+        Route::post('/store', [AgendaController::class, 'store'])->name('agenda.store');
+        Route::get('/edit/{id}', [AgendaController::class, 'edit'])->name('agenda.edit');
+        Route::put('/update/{id}', [AgendaController::class, 'update'])->name('agenda.update');
+        Route::delete('/destroy/{id}', [AgendaController::class, 'destroy'])->name('agenda.destroy');
+    });
+    Route::prefix('postingan-berita')->group(function () {
+        Route::get('/index', [PostinganBeritaController::class, 'index'])->name('postinganberita.index');
+        Route::get('/show/{id}', [PostinganBeritaController::class, 'show'])->name('postinganberita.show');
+        Route::get('/create', [PostinganBeritaController::class, 'create'])->name('postinganberita.create');
+        Route::post('/store', [PostinganBeritaController::class, 'store'])->name('postinganberita.store');
+        Route::get('/edit/{id}', [PostinganBeritaController::class, 'edit'])->name('postinganberita.edit');
+        Route::put('/update/{id}', [PostinganBeritaController::class, 'update'])->name('postinganberita.update');
+        Route::delete('/destroy/{id}', [PostinganBeritaController::class, 'destroy'])->name('postinganberita.destroy');
+    });
+    Route::prefix('publikasi-dosen')->group(function () {
+        Route::get('/index', [PublikasiDosenController::class, 'index'])->name('publikasidosen.index');
+        Route::get('/show/{id}', [PublikasiDosenController::class, 'show'])->name('publikasidosen.show');
+        Route::get('/create', [PublikasiDosenController::class, 'create'])->name('publikasidosen.create');
+        Route::post('/store', [PublikasiDosenController::class, 'store'])->name('publikasidosen.store');
+        Route::get('/edit/{id}', [PublikasiDosenController::class, 'edit'])->name('publikasidosen.edit');
+        Route::put('/update/{id}', [PublikasiDosenController::class, 'update'])->name('publikasidosen.update');
+        Route::delete('/destroy/{id}', [PublikasiDosenController::class, 'destroy'])->name('publikasidosen.destroy');
+    });
+    Route::prefix('sub-kemahasiswaan')->group(function () {
+        Route::get('/index', [SubKemahasiswaanController::class, 'index'])->name('subkemahasiswaan.index');
+        Route::get('/show/{id}', [SubKemahasiswaanController::class, 'show'])->name('subkemahasiswaan.show');
+        Route::get('/create', [SubKemahasiswaanController::class, 'create'])->name('subkemahasiswaan.create');
+        Route::post('/store', [SubKemahasiswaanController::class, 'store'])->name('subkemahasiswaan.store');
+        Route::get('/edit/{id}', [SubKemahasiswaanController::class, 'edit'])->name('subkemahasiswaan.edit');
+        Route::put('/update/{id}', [SubKemahasiswaanController::class, 'update'])->name('subkemahasiswaan.update');
+        Route::delete('/destroy/{id}', [SubKemahasiswaanController::class, 'destroy'])->name('subkemahasiswaan.destroy');
+    });
+    Route::prefix('alumni')->group(function () {
+        Route::get('/index', [AlumniController::class, 'index'])->name('alumni.index');
+        Route::post('/store', [AlumniController::class, 'store'])->name('alumni.store');
+        Route::put('/update/{id}', [AlumniController::class, 'update'])->name('alumni.update');
+        Route::delete('/destroy/{id}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
+    });
+    Route::prefix('unduhan')->group(function () {
+        Route::get('/index', [UnduhanController::class, 'index'])->name('unduhan.index');
+        Route::post('/store', [UnduhanController::class, 'store'])->name('unduhan.store');
+        Route::put('/update/{id}', [UnduhanController::class, 'update'])->name('unduhan.update');
+        Route::delete('/destroy/{id}', [UnduhanController::class, 'destroy'])->name('unduhan.destroy');
     });
 });
 

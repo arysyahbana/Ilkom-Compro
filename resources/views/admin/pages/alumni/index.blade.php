@@ -1,14 +1,14 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Pengumuman | SIMT')
+@section('title', 'Alumni | SIMT')
 
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
             <div class="d-flex justify-content-between mb-3">
-                <h3 style="color: #47245C">Daftar Pengumuman</h3>
+                <h3 style="color: #47245C">Daftar Data Alumni Ilmu Komunikasi</h3>
                 <a href="#" class="btn btn-sm pt-2 px-3 fw-bold" style="border: 1px solid #47245C; border-radius: 0.5rem"
-                    data-bs-toggle="modal" data-bs-target="#addpengumuman">
+                    data-bs-toggle="modal" data-bs-target="#addalumni">
                     <img src="{{ asset('dist/images/addIcon.svg') }}" alt="" class="pe-1">
                     <span style="color: #47245C;">Tambah</span>
                 </a>
@@ -21,8 +21,8 @@
                                 <thead>
                                     <tr style="background-color: #B92383; color: white; border-radius: 0.5rem">
                                         <th>No</th>
-                                        <th>Nama Pengumuman</th>
-                                        <th>Link</th>
+                                        <th>Nama Data Alumni</th>
+                                        {{-- <th>Link</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -32,46 +32,49 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->nama ?? '' }}</td>
-                                            <td><a href="{{ $item->link ?? '' }}"
-                                                    target="_blank">{{ $item->link ?? '' }}</a></td>
+                                            {{-- <td><a href="{{ $item->link ?? '' }}"
+                                                    target="_blank">{{ $item->link ?? '' }}</a></td> --}}
                                             <td>
+                                                <a href="{{ $item->link ?? '' }}" class="btn" target="_blank">
+                                                    <img src="{{ asset('dist/images/eyeIcon.svg') }}" alt="">
+                                                </a>
                                                 <a href="#" class="btn" data-bs-toggle="modal"
-                                                    data-bs-target="#editpengumuman{{ $item->id }}">
+                                                    data-bs-target="#editalumni{{ $item->id }}">
                                                     <img src="{{ asset('dist/images/editIcon.svg') }}" alt="">
                                                 </a>
                                                 <a href="#" class="btn" data-bs-toggle="modal"
-                                                    data-bs-target="#hapuspengumuman{{ $item->id }}">
+                                                    data-bs-target="#hapusalumni{{ $item->id }}">
                                                     <img src="{{ asset('dist/images/trashIcon.svg') }}" alt="">
                                                 </a>
                                             </td>
                                         </tr>
 
-                                        <!-- Modal Edit Pengumuman -->
-                                        <div class="modal fade" id="editpengumuman{{ $item->id }}"
-                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                            aria-labelledby="editpengumumanLabel" aria-hidden="true">
+                                        <!-- Modal Edit Alumni -->
+                                        <div class="modal fade" id="editalumni{{ $item->id }}" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="editalumniLabel"
+                                            aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-scrollable">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="editpengumumanLabel">Edit Data</h1>
+                                                        <h1 class="modal-title fs-5" id="editalumniLabel">Edit Data</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="{{ route('pengumuman.update', $item->id) }}"
-                                                        method="POST">
+                                                    <form action="{{ route('alumni.update', $item->id) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
                                                             <div class="mb-3">
-                                                                <label for="nama" class="form-label">Nama</label>
+                                                                <label for="nama" class="form-label">Nama Data
+                                                                    Alumni</label>
                                                                 <input type="text" name="nama" class="form-control"
-                                                                    id="nama" placeholder="Masukkan nama pengumuman"
+                                                                    id="nama" placeholder="Masukkan nama data alumni"
                                                                     value="{{ $item->nama ?? '' }}">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="link" class="form-label">Link</label>
+                                                                <label for="link" class="form-label">Link PDF</label>
                                                                 <input type="text" name="link" class="form-control"
-                                                                    id="link" placeholder="Masukkan link"
+                                                                    id="link" placeholder="Masukkan link tautan disini"
                                                                     value="{{ $item->link ?? '' }}">
                                                             </div>
                                                         </div>
@@ -86,14 +89,13 @@
                                         </div>
                         </div>
 
-                        <!-- Modal Hapus Pengumuman -->
-                        <div class="modal fade" id="hapuspengumuman{{ $item->id }}" data-bs-backdrop="static"
-                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="hapuspengumumanLabel"
-                            aria-hidden="true">
+                        <!-- Modal Hapus Alumni -->
+                        <div class="modal fade" id="hapusalumni{{ $item->id }}" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="hapusalumniLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="hapuspengumumanLabel">Hapus Data
+                                        <h1 class="modal-title fs-5" id="hapusalumniLabel">Hapus Data
                                         </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
@@ -104,7 +106,7 @@
                                         <p>Apakah Anda yakin ingin menghapus data?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="{{ route('pengumuman.destroy', $item->id) }}" method="POST">
+                                        <form action="{{ route('alumni.destroy', $item->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -123,27 +125,27 @@
             </div>
         </div>
 
-        <!-- Modal Add Pengumuman -->
-        <div class="modal fade" id="addpengumuman" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="addpengumumanLabel" aria-hidden="true">
+        <!-- Modal Add Alumni -->
+        <div class="modal fade" id="addalumni" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="addalumniLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="addpengumumanLabel">Tambah Data</h1>
+                        <h1 class="modal-title fs-5" id="addalumniLabel">Tambah Data</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('pengumuman.store') }}" method="POST">
+                    <form action="{{ route('alumni.store') }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
+                                <label for="nama" class="form-label">Nama Data Alumni</label>
                                 <input type="text" name="nama" class="form-control" id="nama"
-                                    placeholder="Masukkan nama pengumuman">
+                                    placeholder="Masukkan nama data alumni">
                             </div>
                             <div class="mb-3">
-                                <label for="link" class="form-label">Link</label>
+                                <label for="link" class="form-label">Link PDF</label>
                                 <input type="text" name="link" class="form-control" id="link"
-                                    placeholder="Masukkan link">
+                                    placeholder="Masukkan link tautan disini">
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -142,13 +142,13 @@
                             <a href="{{ route('pengumuman.index') }}">Pengumuman</a>
                         </li>
                         <li>
-                            <a href="apps-tasks-details.html">Agenda</a>
+                            <a href="{{ route('agenda.index') }}">Agenda</a>
                         </li>
                         <li>
-                            <a href="apps-kanban.html">Postingan Berita</a>
+                            <a href="{{ route('postinganberita.index') }}">Postingan Berita</a>
                         </li>
                         <li>
-                            <a href="apps-kanban.html">Publikasi Dosen</a>
+                            <a href="{{ route('publikasidosen.index') }}">Publikasi Dosen</a>
                         </li>
                         @foreach ($beritaSubmenu as $berita)
                             <li>
@@ -169,10 +169,10 @@
                 <div class="collapse" id="kemahasiswaan">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="apps-tasks.html">Alumni</a>
+                            <a href="{{ route('alumni.index') }}">Alumni</a>
                         </li>
                         <li>
-                            <a href="apps-tasks-details.html">Kemahasiswaan</a>
+                            <a href="{{ route('subkemahasiswaan.index') }}">Kemahasiswaan</a>
                         </li>
                         @foreach ($kemahasiswaanSubmenu as $kemahasiswaan)
                             <li>
@@ -213,7 +213,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="apps-file-manager.html" class="side-nav-link">
+                <a href="{{ route('unduhan.index') }}" class="side-nav-link">
                     <i class="uil-cloud-download"></i>
                     <span> Unduhan & Tautan</span>
                 </a>
