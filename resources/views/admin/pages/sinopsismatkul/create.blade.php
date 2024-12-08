@@ -5,7 +5,7 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
-            <h4 class="mb-3">Sinopsis Mata Kuliah</h4>
+            <h4 class="mb-3" style="color: #47245C">Sinopsis Mata Kuliah</h4>
             <div class="card">
                 <div class="card-body">
                     <div class="tab-content mt-3">

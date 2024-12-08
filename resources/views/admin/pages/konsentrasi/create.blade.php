@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Create Konsentrasi</h3>
+                    <h3 class="" style="color: #47245C">Create Konsentrasi</h3>
                     <div class="tab-content mt-3">
                         <form action="{{ route('konsentrasi.store') }}" method="POST">
                             @csrf
@@ -15,7 +15,8 @@
                                 <label for="konsentrasi" class="form-label">Konsentrasi</label>
                                 <input type="text" name="konsentrasi" class="form-control" id="konsentrasi">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn form-control text-light"
+                                style="background-color: #47245C">Submit</button>
                         </form>
                     </div>
 

@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Create Pangkat</h3>
+                    <h3 class="" style="color: #47245C">Create Pangkat</h3>
                     <div class="tab-content mt-3">
                         <form action="{{ route('pangkat.store') }}" method="POST">
                             @csrf
@@ -15,7 +15,8 @@
                                 <label for="pangkat" class="form-label">Pangkat</label>
                                 <input type="text" name="pangkat" class="form-control" id="pangkat">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn form-control text-light"
+                                style="background-color: #47245C; color: white">Submit</button>
                         </form>
                     </div>
 

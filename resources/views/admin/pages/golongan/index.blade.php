@@ -5,16 +5,21 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
+            <div class="d-flex justify-content-between mb-3">
+                <h3 class="" style="color: #47245C">Daftar Golongan</h3>
+                <a href="{{ route('golongan.create') }}" class="btn btn-sm pt-2 px-3 fw-bold"
+                    style="border: 1px solid #47245C; border-radius: 0.5rem">
+                    <img src="{{ asset('dist/images/addIcon.svg') }}" alt="" class="pe-1">
+                    <span class="pt-2" style="color: #47245C;">Tambah</span>
+                </a>
+            </div>
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Golongan</h3>
-
-                    <a href="{{ route('golongan.create') }}" class="btn btn-sm btn-success my-3">Add</a>
                     <div class="tab-content table-responsive">
                         <div class="tab-pane show active" id="basic-datatable-preview">
                             <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                 <thead>
-                                    <tr>
+                                    <tr style="background-color: #B92383; color: white; border-radius: 0.5rem">
                                         <th>No</th>
                                         <th>Golongan</th>
                                         <th>Action</th>
@@ -27,10 +32,13 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->golongan ?? '' }}</td>
                                             <td>
-                                                <a href="{{ route('golongan.edit', $item->id) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
-                                                <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#hapusgolongan{{ $item->id }}"">Hapus</a>
+                                                <a href="{{ route('golongan.edit', $item->id) }}" class="btn">
+                                                    <img src="{{ asset('dist/images/editIcon.svg') }}" alt="">
+                                                </a>
+                                                <a href="#" class="btn" data-bs-toggle="modal"
+                                                    data-bs-target="#hapusgolongan{{ $item->id }}">
+                                                    <img src="{{ asset('dist/images/trashIcon.svg') }}" alt="">
+                                                </a>
                                             </td>
                                         </tr>
 

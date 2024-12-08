@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Create Visi & Misi</h3>
+                    <h3 style="color: #47245C">Create Visi & Misi</h3>
                     <div class="tab-content mt-3">
                         <form action="{{ route('visimisi.store') }}" method="POST">
                             @csrf

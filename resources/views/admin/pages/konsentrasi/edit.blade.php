@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Edit Konsentrasi</h3>
+                    <h3 class="" style="color: #47245C">Edit Konsentrasi</h3>
                     <div class="tab-content mt-3">
                         <form action="{{ route('konsentrasi.update', $item->id) }}" method="POST">
                             @csrf
@@ -17,7 +17,8 @@
                                 <input type="text" name="konsentrasi" class="form-control" id="konsentrasi"
                                     value="{{ $item->konsentrasi ?? '' }}">
                             </div>
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn form-control text-light"
+                                style="background-color: #47245C">Update</button>
                         </form>
                     </div>
 

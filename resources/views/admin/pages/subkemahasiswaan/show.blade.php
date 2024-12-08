@@ -7,7 +7,7 @@
         <div class="col-6">
             <div class="card py-3">
                 <div class="card-header">
-                    <h4 class="mb-3">Cover Halaman Postingan Data Kemahasiswaan </h4>
+                    <h4 class="mb-3" style="color: #47245C">Cover Halaman Postingan Data Kemahasiswaan </h4>
                     <img src="{{ asset('dist/assets/img/subkemahasiswaan/' . $subkemahasiswaan->image ?? '') }}"
                         alt="" class="img-fluid img-thumbnail mb-1" style="max-width:600px">
                 </div>

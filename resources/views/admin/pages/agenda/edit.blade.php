@@ -5,7 +5,7 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
-            <h4 class="mb-3">Cover Halaman Postingan Agenda</h4>
+            <h4 class="mb-3" style="color: #47245C">Cover Halaman Postingan Agenda</h4>
             <img src="{{ asset('dist/assets/img/agenda/' . $item->image ?? '') }}" alt=""
                 class="img-fluid img-thumbnail mb-3" style="max-width: 800px">
             <div class="card">

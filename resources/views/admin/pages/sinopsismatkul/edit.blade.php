@@ -5,7 +5,7 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
-            <h4 class="">Pdf Sinopsis Mata Kuliah</h4>
+            <h4 class="" style="color: #47245C">Pdf Sinopsis Mata Kuliah</h4>
             <img src="{{ asset('dist/images/pdf.svg') }}" alt="" class="img-fluid mb-3 me-2">
             <a href="{{ asset('dist/assets/pdf/sinopsismatkul/' . $dataSinopsisMatkul->pdf ?? '') }}"
                 style="color: #47245C; text-decoration: underline"

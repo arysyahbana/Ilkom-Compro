@@ -7,7 +7,7 @@
         <div class="col-6">
             <div class="card py-3">
                 <div class="card-header">
-                    <h4 class="mb-3">Cover Halaman Postingan Berita</h4>
+                    <h4 class="mb-3" style="color: #47245C">Cover Halaman Postingan Berita</h4>
                     <img src="{{ asset('dist/assets/img/postinganberita/' . $postinganberita->image ?? '') }}" alt=""
                         class="img-fluid img-thumbnail mb-1" style="max-width:600px">
                 </div>

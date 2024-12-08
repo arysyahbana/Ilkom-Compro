@@ -5,7 +5,7 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
-            <h4 class="">Gambar Kurikulum</h4>
+            <h4 class="" style="color: #47245C">Gambar Kurikulum</h4>
             <img src="{{ asset('dist/assets/img/kurikulum/' . $dataKurikulum->image ?? '') }}" alt=""
                 class="img-fluid img-thumbnail mb-3" style="max-width: 800px">
             <div class="card">

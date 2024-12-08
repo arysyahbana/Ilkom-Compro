@@ -5,7 +5,7 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
-            <h4 class="">Gambar Struktur Organisasi</h4>
+            <h4 style="color: #47245C">Gambar Struktur Organisasi</h4>
             <img src="{{ asset('dist/assets/img/strukturorganisasi/' . $dataStrukturOrganisasi->image ?? '') }}"
                 alt="" class="img-fluid img-thumbnail mb-3" style="max-width: 800px">
             <div class="card">

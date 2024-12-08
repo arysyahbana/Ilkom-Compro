@@ -169,11 +169,11 @@
             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#"
                 role="button" aria-haspopup="false" aria-expanded="false">
                 <span class="account-user-avatar">
-                    <img src="{{ asset('dist/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
+                    <img src="{{ asset('dist/images/logo_sm.svg') }}" alt="user-image" class="">
                 </span>
                 <span>
-                    <span class="account-user-name">Soeng Souy</span>
-                    <span class="account-position">Founder</span>
+                    <span class="account-user-name">{{ Auth::user()->name }}</span>
+                    <span class="account-position">{{ Auth::user()->email }}</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -220,82 +220,194 @@
 
     </ul>
 
-    <button class="button-menu-mobile open-left">
-        <i class="mdi mdi-menu"></i>
-    </button>
-    <div class="app-search dropdown d-none d-lg-block">
-        <div class="text-dark fw-bold align-self-center" style="padding-top: 17px; padding-bottom: 17px">
-            @if (Route::is('dashboard'))
-                <i class="uil-home-alt fs-3"></i>
-                <span>Dashboards</span>
-            @elseif (Route::is('galeriilkom.*'))
-                <i class="uil-home fs-3"></i>
-                <span>Galeri Ilmu Komunikasi</span>
-            @elseif (Route::is('fakultas.*'))
-                <i class="uil-home fs-3"></i>
-                <span>Data Fakultas</span>
-            @elseif (Route::is('tentang.*'))
-                <i class="uil-info-circle fs-3"></i>
-                <span>Tentang</span>
-            @elseif (Route::is('visimisi.*'))
-                <i class="uil-info-circle fs-3"></i>
-                <span>Visi & Misi</span>
-            @endif
-        </div>
-
-        <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-            <!-- item-->
-            <div class="dropdown-header noti-title">
-                <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
+    <div class="d-flex align-items-center">
+        <button class="button-menu-mobile open-left">
+            <i class="mdi mdi-menu"></i>
+        </button>
+        <div class="app-search dropdown d-none d-lg-block">
+            <div class="text-dark fw-bold align-self-center" style="padding-top: 17px; padding-bottom: 17px">
+                @if (Route::is('dashboard'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-home-alt fs-3"></i>
+                        <span class="pt-1">Dashboards</span>
+                    </div>
+                @elseif (Route::is('galeriilkom.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-home fs-3"></i>
+                        <span class="pt-1">Galeri Ilmu Komunikasi</span>
+                    </div>
+                @elseif (Route::is('fakultas.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-home fs-3"></i>
+                        <span class="pt-1">Data Fakultas</span>
+                    </div>
+                @elseif (Route::is('tentang.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-info-circle fs-3"></i>
+                        <span class="pt-1">Tentang</span>
+                    </div>
+                @elseif (Route::is('visimisi.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-info-circle fs-3"></i>
+                        <span class="pt-1">Visi & Misi</span>
+                    </div>
+                @elseif (Route::is('strukturorganisasi.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-info-circle fs-3"></i>
+                        <span class="pt-1">Struktur Organisasi</span>
+                    </div>
+                @elseif (Route::is('dosen.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-info-circle fs-3"></i>
+                        <span class="pt-1">Dosen</span>
+                    </div>
+                @elseif (Route::is('kurikulum.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Kurikulum</span>
+                    </div>
+                @elseif (Route::is('akreditasidepartemen.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Akreditasi Departemen</span>
+                    </div>
+                @elseif (Route::is('sinopsismatkul.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Sinopsis Mata Kuliah</span>
+                    </div>
+                @elseif (Route::is('kalenderakademik.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Kalender Akademik</span>
+                    </div>
+                @elseif (Route::is('konsentrasipenjurusan.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Konsentrasi Penjurusan</span>
+                    </div>
+                @elseif (Route::is('programsarjana.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Program Sarjana</span>
+                    </div>
+                @elseif (Route::is('pengumuman.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-comment-dots fs-3"></i>
+                        <span>Pengumuman</span>
+                    </div>
+                @elseif (Route::is('agenda.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-comment-dots fs-3"></i>
+                        <span>Agenda</span>
+                    </div>
+                @elseif (Route::is('postinganberita.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-comment-dots fs-3"></i>
+                        <span>Postingan Berita</span>
+                    </div>
+                @elseif (Route::is('publikasidosen.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-comment-dots fs-3"></i>
+                        <span>Publikasi Dosen</span>
+                    </div>
+                @elseif (Route::is('alumni.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-users-alt fs-3"></i>
+                        <span>Alumni</span>
+                    </div>
+                @elseif (Route::is('kemahasiswaan.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-users-alt fs-3"></i>
+                        <span>Kemahasiswaaan</span>
+                    </div>
+                @elseif (Route::is('jabatan.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-clipboard-alt fs-3"></i>
+                        <span>Jabatan</span>
+                    </div>
+                @elseif (Route::is('pangkat.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-clipboard-alt fs-3"></i>
+                        <span>Pangkat</span>
+                    </div>
+                @elseif (Route::is('golongan.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-clipboard-alt fs-3"></i>
+                        <span>Golongan</span>
+                    </div>
+                @elseif (Route::is('konsentrasi.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-clipboard-alt fs-3"></i>
+                        <span>Konsentrasi</span>
+                    </div>
+                @elseif (Route::is('bidangkajian.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-clipboard-alt fs-3"></i>
+                        <span>Bidang Kajian</span>
+                    </div>
+                @elseif (Route::is('unduhan.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-cloud-download fs-3"></i>
+                        <span>Unduhan & Tautan</span>
+                    </div>
+                @endif
             </div>
 
-            <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                <i class="uil-notes font-16 me-1"></i>
-                <span>Analytics Report</span>
-            </a>
+            <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
+                <!-- item-->
+                <div class="dropdown-header noti-title">
+                    <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
+                </div>
 
-            <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                <i class="uil-life-ring font-16 me-1"></i>
-                <span>How can I help you?</span>
-            </a>
-
-            <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                <i class="uil-cog font-16 me-1"></i>
-                <span>User profile settings</span>
-            </a>
-
-            <!-- item-->
-            <div class="dropdown-header noti-title">
-                <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-            </div>
-
-            <div class="notification-list">
                 <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <div class="d-flex">
-                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-2.jpg"
-                            alt="Generic placeholder image" height="32">
-                        <div class="w-100">
-                            <h5 class="m-0 font-14">Erwin Brown</h5>
-                            <span class="font-12 mb-0">UI Designer</span>
-                        </div>
-                    </div>
+                    <i class="uil-notes font-16 me-1"></i>
+                    <span>Analytics Report</span>
                 </a>
 
                 <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <div class="d-flex">
-                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-5.jpg"
-                            alt="Generic placeholder image" height="32">
-                        <div class="w-100">
-                            <h5 class="m-0 font-14">Jacob Deo</h5>
-                            <span class="font-12 mb-0">Developer</span>
-                        </div>
-                    </div>
+                    <i class="uil-life-ring font-16 me-1"></i>
+                    <span>How can I help you?</span>
                 </a>
+
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="uil-cog font-16 me-1"></i>
+                    <span>User profile settings</span>
+                </a>
+
+                <!-- item-->
+                <div class="dropdown-header noti-title">
+                    <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
+                </div>
+
+                <div class="notification-list">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <div class="d-flex">
+                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-2.jpg"
+                                alt="Generic placeholder image" height="32">
+                            <div class="w-100">
+                                <h5 class="m-0 font-14">Erwin Brown</h5>
+                                <span class="font-12 mb-0">UI Designer</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <div class="d-flex">
+                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/avatar-5.jpg"
+                                alt="Generic placeholder image" height="32">
+                            <div class="w-100">
+                                <h5 class="m-0 font-14">Jacob Deo</h5>
+                                <span class="font-12 mb-0">Developer</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

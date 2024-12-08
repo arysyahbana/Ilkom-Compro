@@ -10,7 +10,7 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('dist/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('dist/images/logo_sm.svg') }}">
 
     @include('admin.layouts.css')
     {{-- iziToast --}}
@@ -18,12 +18,46 @@
 
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style>
+        /* Warna side menu */
+        .leftside-menu {
+            background: #260C36 !important;
+        }
 
+        /* Warna teks menu */
+        .side-nav .side-nav-link,
+        .side-nav .side-nav-title,
+        .side-nav .side-nav-forth-level li a,
+        .side-nav .side-nav-second-level li a,
+        .side-nav .side-nav-third-level li a {
+            color: #fff !important;
+            /* Teks menjadi putih */
+        }
+
+        /* Warna teks saat hover atau aktif */
+        .side-nav .side-nav-link:hover,
+        .side-nav .side-nav-link:focus,
+        .side-nav .menuitem-active>a {
+            color: #fff !important;
+            /* Tetap putih saat aktif atau hover */
+        }
+
+        /* Submenu tetap putih saat hover */
+        .side-nav .side-nav-forth-level li a:hover,
+        .side-nav .side-nav-second-level li a:hover,
+        .side-nav .side-nav-third-level li a:hover {
+            color: #fff !important;
+            /* Teks submenu tetap putih saat hover */
+        }
+
+        .logo-sm {
+            background-color: #260C36 !important;
+        }
+    </style>
 
 </head>
 
-<body class="loading"
-    data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+<body>
     <!-- Begin page -->
     <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->

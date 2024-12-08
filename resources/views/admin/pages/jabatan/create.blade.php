@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Create Jabatan</h3>
+                    <h3 class="" style="color: #47245C">Create Jabatan</h3>
                     <div class="tab-content mt-3">
                         <form action="{{ route('jabatan.store') }}" method="POST">
                             @csrf
@@ -15,7 +15,8 @@
                                 <label for="jabatan" class="form-label">Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control" id="jabatan">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn form-control text-light"
+                                style="background-color: #47245C; border-radius: 0.5rem">Submit</button>
                         </form>
                     </div>
 

@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Edit Data Fakultas</h3>
+                    <h3 style="color: #47245C">Edit Data Fakultas</h3>
                     <div class="tab-content mt-4">
                         <form action="{{ route('fakultas.update.manage', $dataFakultas->id) }}" method="POST">
                             @csrf
