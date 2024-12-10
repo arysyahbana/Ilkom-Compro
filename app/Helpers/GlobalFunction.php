@@ -21,6 +21,7 @@ class GlobalFunction
     public static function deleteImage($filename, $path = '')
     {
         $path = public_path('dist/assets/img/' . $path);
+
         if (file_exists($path . $filename)) {
             unlink($path . $filename);
         } else {

@@ -24,6 +24,7 @@
                                         <th>Nama</th>
                                         <th>NIP</th>
                                         <th>NIDN</th>
+                                        <th>Kategori</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -35,6 +36,7 @@
                                             <td>{{ $item->nama ?? '' }}</td>
                                             <td>{{ $item->nip ?? '' }}</td>
                                             <td>{{ $item->nidn ?? '' }}</td>
+                                            <td>{{ $item->kategori ?? '' }}</td>
                                             <td>
                                                 <a href="#" class="btn" data-bs-toggle="modal"
                                                     data-bs-target="#detaildosen{{ $item->id }}">
@@ -58,7 +60,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="detaildosenLabel">
-                                                            Detail Data Dosen
+                                                            Detail Data {{ $item->kategori ?? '' }}
                                                         </h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -132,13 +134,17 @@
                                                                     <span class="fw-bold col-3">Bidang Kajian</span>
                                                                     <span>:</span>
                                                                     <span>
-                                                                        <ul>
-                                                                            @foreach ($item->rBidangKajian as $bk)
-                                                                                <li>
-                                                                                    {{ $bk->bidang_kajian ?? '' }}
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ul>
+                                                                        @if ($item->rBidangKajian->count() > 0)
+                                                                            <ul>
+                                                                                @foreach ($item->rBidangKajian as $bk)
+                                                                                    <li>
+                                                                                        {{ $bk->bidang_kajian ?? '' }}
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        @else
+                                                                            <span class="ps-2">-</span>
+                                                                        @endif
                                                                     </span>
                                                                 </div>
                                                             </div>

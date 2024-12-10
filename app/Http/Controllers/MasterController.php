@@ -99,8 +99,10 @@ class MasterController extends Controller
 
         $item = $this->model::findOrFail($id);
 
+        // dd($item);
+
         if ($item->image) {
-            GlobalFunction::deleteImage($item->image, $imagePath);
+            GlobalFunction::deleteImage($item->image, $imagePath . '/');
         }
 
         if ($item->pdf) {

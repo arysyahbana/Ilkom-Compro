@@ -5,15 +5,27 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
-            <h3 class="mb-3" style="color: #47245C">Edit Dosen</h3>
+            <h3 class="mb-3 col-10" style="color: #47245C">Edit {{ $item->kategori ?? '' }}</h3>
             <img src="{{ asset('dist/assets/img/dosen/' . $item->image) }}" alt="" class="img-fluid img-thumbnail mb-3"
                 style="max-width: 800px">
-            <div class="card">
-                <div class="card-body">
-                    <div class="tab-content mt-3">
-                        <form action="{{ route('dosen.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
+            <form action="{{ route('dosen.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="d-flex justify-content-end mb-2">
+                    <div class="col-2">
+                        <select class="form-select" name="kategori" id="kategori">
+                            <option selected hidden value="0">--- Pilih Kategori ---</option>
+                            <option value="Kadep" {{ $item->kategori == 'Kadep' ? 'selected' : '' }}>
+                                Kepala Departemen
+                            </option>
+                            <option value="Dosen" {{ $item->kategori == 'Dosen' ? 'selected' : '' }}>Dosen</option>
+                            <option value="Staff" {{ $item->kategori == 'Staff' ? 'selected' : '' }}>Staff</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tab-content mt-3">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
@@ -108,7 +120,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" id="konsentrasi" style="display: none">
                                     <div class="mb-3">
                                         <label for="konsentrasi" class="form-label">Konsentrasi</label>
                                         <select class="form-select" aria-label="Default select example" id="konsentrasi"
@@ -123,7 +135,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" id="bidangKajian" style="display: none">
                                     <div class="mb-3">
                                         <label for="bidangkajian" class="form-label">Bidang Kajian</label>
                                         <select class="form-select bidangkajian" aria-label="Default select example"
@@ -220,11 +232,29 @@
                             </div>
                             <button type="submit" class="btn form-control text-light"
                                 style="background-color: #47245C; border-radius: 0.5rem">Perbarui</button>
-                        </form>
+                        </div>
                     </div>
-
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById("kategori").addEventListener("change", function() {
+            const selectedValue = this.value;
+            const konsentrasi = document.getElementById("konsentrasi");
+            const bidangKajian = document.getElementById("bidangKajian");
+
+            if (selectedValue === "Kadep" || selectedValue === "Dosen") {
+                konsentrasi.style.display = "block";
+                bidangKajian.style.display = "block";
+            } else if (selectedValue === "Staff") {
+                konsentrasi.style.display = "none";
+                bidangKajian.style.display = "none";
+            } else {
+                konsentrasi.style.display = "none";
+                bidangKajian.style.display = "none";
+            }
+        });
+    </script>
 @endsection

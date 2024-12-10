@@ -8,6 +8,11 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BidangKajianController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\Frontend\AkademikController as FrontendAkademikController;
+use App\Http\Controllers\Frontend\BeritaController as FrontendBeritaController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\KemahasiswaanController as FrontendKemahasiswaanController;
+use App\Http\Controllers\Frontend\TentangController as FrontendTentangController;
 use App\Http\Controllers\GaleriIlkomController;
 use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\JabatanController;
@@ -41,8 +46,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::prefix('tentang')->group(function () {
+    Route::get('/sejarah', [FrontendTentangController::class, 'sejarah'])->name('tentang.sejarah');
+    Route::get('/visimisi', [FrontendTentangController::class, 'visimisi'])->name('tentang.visimisi');
+    Route::get('/dosen', [FrontendTentangController::class, 'dosen'])->name('tentang.dosen');
+    Route::get('/struktur', [FrontendTentangController::class, 'struktur'])->name('tentang.struktur');
+});
+Route::prefix('berita')->group(function () {
+    Route::get('/berita', [FrontendBeritaController::class, 'berita'])->name('berita.berita');
+    Route::get('/berita/{id}', [FrontendBeritaController::class, 'berita_detail'])->name('berita.beritadetail');
+    Route::get('/agenda', [FrontendBeritaController::class, 'agenda'])->name('berita.agenda');
+    Route::get('/agenda/{id}', [FrontendBeritaController::class, 'agenda_detail'])->name('berita.agendadetail');
+    Route::get('/publikasi-dosen', [FrontendBeritaController::class, 'publikasi_dosen'])->name('berita.publikasidosen');
+    Route::get('/publikasi/{id}', [FrontendBeritaController::class, 'publikasi_detail'])->name('berita.publikasidetail');
+});
+Route::prefix('akademik')->group(function () {
+    Route::get('/sop', [FrontendAkademikController::class, 'sop'])->name('akademik.sop');
+    Route::get('/sop-detail', [FrontendAkademikController::class, 'sop_detail'])->name('akademik.sopdetail');
+});
+Route::prefix('kemahasiswaan')->group(function () {
+    Route::get('/alumni', [FrontendKemahasiswaanController::class, 'alumni'])->name('kemahasiswaan.alumni');
+    Route::get('/alumni-detail', [FrontendKemahasiswaanController::class, 'alumni_detail'])->name('kemahasiswaan.alumnidetail');
+    Route::get('/kemahasiswaan', [FrontendKemahasiswaanController::class, 'kemahasiswaan'])->name('kemahasiswaan.kemahasiswaan');
+    Route::get('/kemahasiswaan-detail/{id}', [FrontendKemahasiswaanController::class, 'kemahasiswaan_detail'])->name('kemahasiswaan.kemahasiswaandetail');
 });
 
 

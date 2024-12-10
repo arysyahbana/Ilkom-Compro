@@ -27,6 +27,7 @@ class Dosen extends Model
         's1',
         's2',
         's3',
+        'kategori',
     ];
 
     public static $rules = [
@@ -39,7 +40,7 @@ class Dosen extends Model
         'pangkat_id' => 'required|exists:pangkats,id',
         'golongan_id' => 'required|exists:golongans,id',
         'jabatan_id' => 'required|exists:jabatans,id',
-        'konsentrasi_id' => 'required|exists:konsentrasis,id',
+        'konsentrasi_id' => 'nullable|exists:konsentrasis,id',
         'alamat_instansi' => 'required|string|max:255',
         'telpon' => 'nullable|string|max:255',
         'fax' => 'nullable|string|max:255',
@@ -47,6 +48,7 @@ class Dosen extends Model
         's1' => 'nullable|string|max:255',
         's2' => 'nullable|string|max:255',
         's3' => 'nullable|string|max:255',
+        'kategori' => 'required|string|max:255',
     ];
 
     public function rBidangkajian()

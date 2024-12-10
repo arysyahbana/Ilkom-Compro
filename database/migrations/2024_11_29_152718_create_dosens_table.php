@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('pangkat_id')->constrained('pangkats')->onDelete('cascade');
             $table->foreignId('golongan_id')->constrained('golongans')->onDelete('cascade');
             $table->foreignId('jabatan_id')->constrained('jabatans')->onDelete('cascade');
-            $table->foreignId('konsentrasi_id')->constrained('konsentrasis')->onDelete('cascade');
+            $table->foreignId('konsentrasi_id')->nullable()->constrained('konsentrasis')->onDelete('cascade');
             $table->string('alamat_instansi');
             $table->string('telpon')->nullable();
             $table->string('fax')->nullable();
@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('s1')->nullable();
             $table->string('s2')->nullable();
             $table->string('s3')->nullable();
+            $table->string('kategori');
             $table->timestamps();
         });
     }

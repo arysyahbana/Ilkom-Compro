@@ -50,12 +50,13 @@ class DosenController extends MasterController
         $dosen->pangkat_id = $request->input('pangkat_id');
         $dosen->golongan_id = $request->input('golongan_id');
         $dosen->jabatan_id = $request->input('jabatan_id');
-        $dosen->konsentrasi_id = $request->input('konsentrasi_id');
+        $dosen->konsentrasi_id = $request->input('konsentrasi_id') ?? null;
 
         $dosen->alamat_instansi = $request->input('alamat_instansi');
         $dosen->telpon = $request->input('telpon');
         $dosen->fax = $request->input('fax');
         $dosen->email = $request->input('email');
+        $dosen->kategori = $request->input('kategori');
 
         $s1Data = [
             $request->input('jurusan_s1'),

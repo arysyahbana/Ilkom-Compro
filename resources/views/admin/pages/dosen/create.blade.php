@@ -5,12 +5,23 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-12">
-            <h3 class="mb-3" style="color: #47245C">Create Dosen</h3>
-            <div class="card">
-                <div class="card-body">
-                    <div class="tab-content mt-3">
-                        <form action="{{ route('dosen.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+            <form action="{{ route('dosen.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <div class="d-flex justify-content-between pb-2 align-items-center">
+                    <h3 class="mb-3 col-10" style="color: #47245C">Create Dosen</h3>
+                    <select class="form-select" name="kategori" id="kategori">
+                        <option selected hidden value="0">--- Pilih Kategori ---</option>
+                        <option value="Kadep">Kepala Departemen</option>
+                        <option value="Dosen">Dosen</option>
+                        <option value="Staff">Staff</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tab-content mt-3">
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
@@ -91,7 +102,7 @@
                                         <label for="golongan" class="form-label">Golongan</label>
                                         <select class="form-select" aria-label="Default select example" id="golongan"
                                             name="golongan_id">
-                                            <option selected hidden value="0">--- Pilih Golongan ---</option>
+                                            <option selected hidden value="">--- Pilih Golongan ---</option>
                                             @foreach ($golongans as $golongan)
                                                 <option value="{{ $golongan->id ?? '0' }}">
                                                     {{ $golongan->golongan ?? '' }}
@@ -100,12 +111,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" id="konsentrasi" style="display: none">
                                     <div class="mb-3">
                                         <label for="konsentrasi" class="form-label">Konsentrasi</label>
                                         <select class="form-select" aria-label="Default select example" id="konsentrasi"
                                             name="konsentrasi_id">
-                                            <option selected hidden value="0">--- Pilih Konsentrasi ---</option>
+                                            <option selected hidden value="1">--- Pilih Konsentrasi ---</option>
                                             @foreach ($konsentrasis as $konsentrasi)
                                                 <option value="{{ $konsentrasi->id ?? '0' }}">
                                                     {{ $konsentrasi->konsentrasi ?? '' }}
@@ -114,7 +125,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" id="bidangKajian" style="display: none">
                                     <div class="mb-3">
                                         <label for="bidangkajian" class="form-label">Bidang Kajian</label>
                                         <select class="form-select bidangkajian" aria-label="Default select example"
@@ -209,11 +220,30 @@
                             </div>
                             <button type="submit" class="btn form-control text-light"
                                 style="background-color: #47245C; border-radius: 0.5rem">Simpan</button>
-                        </form>
-                    </div>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById("kategori").addEventListener("change", function() {
+            const selectedValue = this.value;
+            const konsentrasi = document.getElementById("konsentrasi");
+            const bidangKajian = document.getElementById("bidangKajian");
+
+            if (selectedValue === "Kadep" || selectedValue === "Dosen") {
+                konsentrasi.style.display = "block";
+                bidangKajian.style.display = "block";
+            } else if (selectedValue === "Staff") {
+                konsentrasi.style.display = "none";
+                bidangKajian.style.display = "none";
+            } else {
+                konsentrasi.style.display = "none";
+                bidangKajian.style.display = "none";
+            }
+        });
+    </script>
 @endsection
