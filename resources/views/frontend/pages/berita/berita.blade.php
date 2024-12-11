@@ -15,9 +15,13 @@
         <div class="container">
             <div class="row">
                 @php
-                    $latestBerita = $dataBerita->sortByDesc('created_at')->first();
-                    $latestBerita4 = $dataBerita->sortByDesc('created_at')->take(4);
-                    $latestBerita8 = $dataBerita->sortByDesc('created_at')->take(8);
+                    $filteredBerita = $dataBerita->filter(function ($item) {
+                        return !empty($item->image) && empty($item->link);
+                    });
+
+                    $latestBerita = $filteredBerita->sortByDesc('created_at')->first();
+                    $latestBerita4 = $filteredBerita->sortByDesc('created_at')->take(4);
+                    $latestBerita8 = $filteredBerita->sortByDesc('created_at')->take(8);
                 @endphp
                 <div class="col-lg-6 col-md-12">
                     <img src="{{ isset($latestBerita->image) ? asset('dist/assets/img/postinganberita/' . $latestBerita->image) : '' }}"

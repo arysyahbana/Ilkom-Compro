@@ -25,7 +25,7 @@
                     <div class="d-flex gap-1">
                         <p class="fw-bold">Link</p>
                         <p>:</p>
-                        <p>{{ $agenda->link ?? '' }}</p>
+                        <p><a href="{{ $agenda->link ?? '' }}" target="_blank">{{ $agenda->judul ?? '' }}</a></p>
                     </div>
                     <div class="d-flex flex-column">
                         <p class="fw-bold mb-1">Isi Halaman</p>

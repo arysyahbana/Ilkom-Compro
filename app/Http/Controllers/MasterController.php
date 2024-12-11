@@ -73,7 +73,7 @@ class MasterController extends Controller
 
         if ($request->hasFile('image')) {
             if ($item->image) {
-                GlobalFunction::deleteImage($item->image, $imagePath);
+                GlobalFunction::deleteImage($item->image, $imagePath . '/');
             }
 
             $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
@@ -82,7 +82,7 @@ class MasterController extends Controller
 
         if ($request->hasFile('pdf')) {
             if ($item->pdf) {
-                GlobalFunction::deletePDF($item->pdf, $imagePath);
+                GlobalFunction::deletePDF($item->pdf, $imagePath . '/');
             }
 
             $pdfName = GlobalFunction::savePDF($request->file('pdf'), uniqid(), $imagePath);
@@ -106,7 +106,7 @@ class MasterController extends Controller
         }
 
         if ($item->pdf) {
-            GlobalFunction::deletePDF($item->pdf, $imagePath);
+            GlobalFunction::deletePDF($item->pdf, $imagePath . '/');
         }
 
         $item->delete();

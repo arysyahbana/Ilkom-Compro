@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\TentangController as FrontendTentangController
 use App\Http\Controllers\GaleriIlkomController;
 use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\JurnalController;
 use App\Http\Controllers\KalenderAkademikController;
 use App\Http\Controllers\KemahasiswaanController;
 use App\Http\Controllers\KonsentrasiController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramSarjanaController;
 use App\Http\Controllers\PublikasiDosenController;
 use App\Http\Controllers\SinopsisMatkulController;
+use App\Http\Controllers\SopController;
 use App\Http\Controllers\StrukturOrganisasiController;
 use App\Http\Controllers\SubKemahasiswaanController;
 use App\Http\Controllers\TentangController;
@@ -63,8 +65,14 @@ Route::prefix('berita')->group(function () {
     Route::get('/publikasi/{id}', [FrontendBeritaController::class, 'publikasi_detail'])->name('berita.publikasidetail');
 });
 Route::prefix('akademik')->group(function () {
+    Route::get('/kurikulum', [FrontendAkademikController::class, 'kurikulum'])->name('akademik.kurikulum');
+    Route::get('/akreditasi', [FrontendAkademikController::class, 'akreditasi'])->name('akademik.akreditasi');
     Route::get('/sop', [FrontendAkademikController::class, 'sop'])->name('akademik.sop');
-    Route::get('/sop-detail', [FrontendAkademikController::class, 'sop_detail'])->name('akademik.sopdetail');
+    Route::get('/sop-detail/{id}', [FrontendAkademikController::class, 'sop_detail'])->name('akademik.sopdetail');
+    Route::get('/konsentrasi-penjurusan', [FrontendAkademikController::class, 'konsentrasi_penjurusan'])->name('akademik.konsentrasi-penjurusan');
+    Route::get('/program-sarjana', [FrontendAkademikController::class, 'program_sarjana'])->name('akademik.program-sarjana');
+    Route::get('/jurnal', [FrontendAkademikController::class, 'jurnal'])->name('akademik.jurnal');
+    Route::get('/jurnal-detail/{id}', [FrontendAkademikController::class, 'jurnal_detail'])->name('akademik.jurnaldetail');
 });
 Route::prefix('kemahasiswaan')->group(function () {
     Route::get('/alumni', [FrontendKemahasiswaanController::class, 'alumni'])->name('kemahasiswaan.alumni');
@@ -275,6 +283,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/store', [UnduhanController::class, 'store'])->name('unduhan.store');
         Route::put('/update/{id}', [UnduhanController::class, 'update'])->name('unduhan.update');
         Route::delete('/destroy/{id}', [UnduhanController::class, 'destroy'])->name('unduhan.destroy');
+    });
+    Route::prefix('sop')->group(function () {
+        Route::get('/index', [SopController::class, 'index'])->name('sop.index');
+        Route::get('/show/{id}', [SopController::class, 'show'])->name('sop.show');
+        Route::get('/create', [SopController::class, 'create'])->name('sop.create');
+        Route::post('/store', [SopController::class, 'store'])->name('sop.store');
+        Route::get('/edit/{id}', [SopController::class, 'edit'])->name('sop.edit');
+        Route::put('/update/{id}', [SopController::class, 'update'])->name('sop.update');
+        Route::delete('/destroy/{id}', [SopController::class, 'destroy'])->name('sop.destroy');
+    });
+    Route::prefix('jurnal')->group(function () {
+        Route::get('/index', [JurnalController::class, 'index'])->name('jurnal.index');
+        Route::get('/show/{id}', [JurnalController::class, 'show'])->name('jurnal.show');
+        Route::get('/create', [JurnalController::class, 'create'])->name('jurnal.create');
+        Route::post('/store', [JurnalController::class, 'store'])->name('jurnal.store');
+        Route::get('/edit/{id}', [JurnalController::class, 'edit'])->name('jurnal.edit');
+        Route::put('/update/{id}', [JurnalController::class, 'update'])->name('jurnal.update');
+        Route::delete('/destroy/{id}', [JurnalController::class, 'destroy'])->name('jurnal.destroy');
     });
 });
 

@@ -17,7 +17,7 @@
                     @if ($item->kategori == 'Kadep')
                         <div class="col-lg-12 col-md-12">
                             <div class="d-flex align-items-start justify-content-center mb-4">
-                                <img src="{{ asset('dist_frontend/assets/img/dosen.png') }}" alt="Image"
+                                <img src="{{ asset('dist/assets/img/dosen/' . $item->image) }}" alt="Image"
                                     class="img-fluid" style="width: 20%" />
                                 <div class="ms-3">
                                     <p style="font-size: 14px; color: #b92383; margin: 5px 0">Kepala Departemen Ilmu
@@ -43,7 +43,7 @@
                     @else
                         <div class="col-lg-6 col-md-12 mt-4">
                             <div class="d-flex align-items-start justify-content-center mb-4">
-                                <img src="{{ asset('dist_frontend/assets/img/dosen.png') }}" alt="Image"
+                                <img src="{{ asset('dist/assets/img/dosen/' . $item->image) }}" alt="Image"
                                     class="img-fluid" style="width: 30%" />
                                 <div class="ms-3">
                                     <p style="font-size: 12px; color: #b92383; margin: 5px 0">

@@ -22,7 +22,7 @@
                                     <tr style="background-color: #B92383; color: white; border-radius: 0.5rem">
                                         <th>No</th>
                                         <th>Judul Agenda</th>
-                                        <th>Link</th>
+                                        <th>Nama Penulis</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -32,8 +32,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->judul ?? '' }}</td>
-                                            <td><a href="{{ $item->link ?? '' }}"
-                                                    target="_blank">{{ $item->link ?? '' }}</a></td>
+                                            <td>{{ $item->nama_penulis ?? '' }}</td>
                                             <td>
                                                 <a href="{{ route('postinganberita.show', $item->id) }}" class="btn">
                                                     <img src="{{ asset('dist/images/eyeIcon.svg') }}" alt="">

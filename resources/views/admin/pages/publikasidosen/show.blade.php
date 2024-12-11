@@ -25,7 +25,8 @@
                     <div class="d-flex gap-1">
                         <p class="fw-bold">Link</p>
                         <p>:</p>
-                        <p>{{ $publikasidosen->link ?? '' }}</p>
+                        <p><a href="{{ $publikasidosen->link ?? '' }}"
+                                target="_blank">{{ $publikasidosen->judul ?? '' }}</a></p>
                     </div>
                     <div class="d-flex flex-column">
                         <p class="fw-bold mb-1">Isi Halaman</p>

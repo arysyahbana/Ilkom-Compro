@@ -261,6 +261,11 @@
                         <i class="uil-info-circle fs-3"></i>
                         <span class="pt-1">Dosen</span>
                     </div>
+                @elseif (Route::is('akademik.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Akademik</span>
+                    </div>
                 @elseif (Route::is('kurikulum.*'))
                     <div class="d-flex align-items-center gap-1">
                         <i class="uil-book-open fs-3"></i>
@@ -291,6 +296,16 @@
                         <i class="uil-book-open fs-3"></i>
                         <span>Program Sarjana</span>
                     </div>
+                @elseif (Route::is('jurnal.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-book-open fs-3"></i>
+                        <span>Jurnal</span>
+                    </div>
+                @elseif (Route::is('berita.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-comment-dots fs-3"></i>
+                        <span>Berita</span>
+                    </div>
                 @elseif (Route::is('pengumuman.*'))
                     <div class="d-flex align-items-center gap-1">
                         <i class="uil-comment-dots fs-3"></i>
@@ -311,12 +326,17 @@
                         <i class="uil-comment-dots fs-3"></i>
                         <span>Publikasi Dosen</span>
                     </div>
+                @elseif (Route::is('kemahasiswaan.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-users-alt fs-3"></i>
+                        <span>Kemahasiswaaan</span>
+                    </div>
                 @elseif (Route::is('alumni.*'))
                     <div class="d-flex align-items-center gap-1">
                         <i class="uil-users-alt fs-3"></i>
                         <span>Alumni</span>
                     </div>
-                @elseif (Route::is('kemahasiswaan.*'))
+                @elseif (Route::is('subkemahasiswaan.*'))
                     <div class="d-flex align-items-center gap-1">
                         <i class="uil-users-alt fs-3"></i>
                         <span>Kemahasiswaaan</span>

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('postingan_beritas', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->text('link');
+            $table->string('image')->nullable();
+            $table->text('link')->nullable();
             $table->string('nama_penulis');
             $table->string('judul');
             $table->text('isi_halaman');

@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('visimisi.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('strukturorganisasi.manage') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"

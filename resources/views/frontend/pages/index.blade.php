@@ -1,6 +1,13 @@
 @extends('frontend.layouts.app')
 
 @section('content')
+    <style>
+        .text-wrap {
+            word-wrap: break-word;
+            word-break: break-word;
+            white-space: normal;
+        }
+    </style>
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
         <div id="hero-carousel" class="carousel slide carousel-fade">
@@ -175,7 +182,8 @@
                                                     {{ $berita && $berita->created_at ? \Carbon\Carbon::parse($berita->created_at)->translatedFormat('l, d F Y') : '' }}
                                                 </span>
                                             </div>
-                                            <h3 style="color: black; font-size: 16px; margin-top: 5px; font-weight: bold">
+                                            <h3 class="text-wrap"
+                                                style="color: black; font-size: 16px; margin-top: 5px; font-weight: bold">
                                                 {{ $berita->judul ?? '' }}</h3>
                                         </div>
                                     </div>

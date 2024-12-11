@@ -30,26 +30,29 @@ class Dosen extends Model
         'kategori',
     ];
 
-    public static $rules = [
-        'nama' => 'required|string|max:255',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'nip' => 'required|string|max:255',
-        'nidn' => 'required|string|max:255',
-        'tempat_lahir' => 'required|string|max:255',
-        'tanggal_lahir' => 'required|date',
-        'pangkat_id' => 'required|exists:pangkats,id',
-        'golongan_id' => 'required|exists:golongans,id',
-        'jabatan_id' => 'required|exists:jabatans,id',
-        'konsentrasi_id' => 'nullable|exists:konsentrasis,id',
-        'alamat_instansi' => 'required|string|max:255',
-        'telpon' => 'nullable|string|max:255',
-        'fax' => 'nullable|string|max:255',
-        'email' => 'nullable|string|email|max:255',
-        's1' => 'nullable|string|max:255',
-        's2' => 'nullable|string|max:255',
-        's3' => 'nullable|string|max:255',
-        'kategori' => 'required|string|max:255',
-    ];
+    public static function rules($isUpdate = false)
+    {
+        return [
+            'nama' => 'required|string|max:255',
+            'image' => $isUpdate ? 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' : 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'nip' => 'required|string|max:255',
+            'nidn' => 'required|string|max:255',
+            'tempat_lahir' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'pangkat_id' => 'required|exists:pangkats,id',
+            'golongan_id' => 'required|exists:golongans,id',
+            'jabatan_id' => 'required|exists:jabatans,id',
+            'konsentrasi_id' => 'nullable|exists:konsentrasis,id',
+            'alamat_instansi' => 'required|string|max:255',
+            'telpon' => 'nullable|string|max:255',
+            'fax' => 'nullable|string|max:255',
+            'email' => 'nullable|string|email|max:255',
+            's1' => 'nullable|string|max:255',
+            's2' => 'nullable|string|max:255',
+            's3' => 'nullable|string|max:255',
+            'kategori' => 'required|string|max:255',
+        ];
+    }
 
     public function rBidangkajian()
     {

@@ -24,21 +24,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td><a href="{{ route('akademik.sopdetail') }}">Buka disini</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td><a href="{{ route('akademik.sopdetail') }}">Buka disini</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Thornton</td>
-                                <td><a href="{{ route('akademik.sopdetail') }}">Buka disini</a></td>
-                            </tr>
+                            @foreach ($data as $item)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $item->judul ?? '' }}</td>
+                                    <td><a href="{{ route('akademik.sopdetail', $item->id) }}">Buka disini</a></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

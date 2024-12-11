@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Models\Akadem;
 use App\Models\Berita;
+use App\Models\KalenderAkademik;
 use App\Models\Kemahasiswaan;
+use App\Models\SinopsisMatkul;
 use App\Models\Tentang;
 use App\Models\Unduhan;
 use Illuminate\Support\Facades\View;
@@ -32,6 +34,9 @@ class ViewServiceProvider extends ServiceProvider
                 'beritaSubmenu' => Berita::all(),
                 'kemahasiswaanSubmenu' => Kemahasiswaan::all(),
                 'unduhanSubmenu' => Unduhan::all(),
+
+                'distribusiMatkul' => SinopsisMatkul::first(),
+                'kalenderAkademik' => KalenderAkademik::first(),
             ]);
         });
     }

@@ -20,7 +20,8 @@
                     <div class="d-flex gap-1">
                         <p class="fw-bold">Link</p>
                         <p>:</p>
-                        <p>{{ $subkemahasiswaan->link ?? '' }}</p>
+                        <p><a href="{{ $subkemahasiswaan->link ?? '' }}"
+                                target="_blank">{{ $subkemahasiswaan->judul ?? '' }}</a></p>
                     </div>
                     <div class="d-flex flex-column">
                         <p class="fw-bold mb-1">Isi Halaman</p>

@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('visimisi.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('kurikulum.manage') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('visimisi.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('akreditasidepartemen.manage') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('sop.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('sinopsismatkul.manage') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('kalenderakademik.manage') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('konsentrasipenjurusan.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -102,13 +102,24 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('programsarjana.manage') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
                             style="min-height: 250px; overflow: hidden; border-radius: 0.9rem;">
                             <div class="card-body d-flex flex-column h-100 align-items-center justify-content-center">
                                 <p class="text-center fw-bold fs-4">Program Sarjana</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ route('jurnal.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="position-relative">
+                        <div data-bs-toggle="modal" data-bs-target="#editgambar"
+                            class="card shadow position-relative z-1 card-hover"
+                            style="min-height: 250px; overflow: hidden; border-radius: 0.9rem;">
+                            <div class="card-body d-flex flex-column h-100 align-items-center justify-content-center">
+                                <p class="text-center fw-bold fs-4">Jurnal</p>
                             </div>
                         </div>
                     </div>
@@ -133,7 +144,8 @@
                         <button type="button" data-bs-toggle="modal" data-bs-target="#editakademik{{ $item->id }}"
                             class="btn position-absolute mt-2"
                             style="top: 50%; left: 50%; transform: translate(-50%, -50%); background: none; border: none;">
-                            <img src="{{ asset('dist/images/editTentang.svg') }}" alt="Edit" style="cursor: pointer;">
+                            <img src="{{ asset('dist/images/editTentang.svg') }}" alt="Edit"
+                                style="cursor: pointer;">
                         </button>
                     </div>
 

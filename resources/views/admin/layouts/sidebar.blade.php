@@ -20,7 +20,7 @@
             <li class="side-nav-item">
                 <a href="{{ route('dashboard') }}" class="side-nav-link">
                     <i class="uil-home-alt"></i>
-                    <span class="badge bg-success float-end">4</span>
+                    {{-- <span class="badge bg-success float-end">4</span> --}}
                     <span> Dashboards </span>
                 </a>
             </li>
@@ -90,10 +90,10 @@
                             <a href="{{ route('akreditasidepartemen.manage') }}">Akreditasi Departemen</a>
                         </li>
                         <li>
-                            <a href="apps-projects-gantt.html">SOP</a>
+                            <a href="{{ route('sop.index') }}">SOP</a>
                         </li>
                         <li>
-                            <a href="{{ route('sinopsismatkul.manage') }}">Sinopsis Mata Kuliah</a>
+                            <a href="{{ route('sinopsismatkul.manage') }}">Distribusi Mata Kuliah</a>
                         </li>
                         <li>
                             <a href="{{ route('kalenderakademik.manage') }}">Kalender Akademik</a>
@@ -103,6 +103,9 @@
                         </li>
                         <li>
                             <a href="{{ route('programsarjana.manage') }}">Program Sarjana</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('jurnal.index') }}">Jurnal</a>
                         </li>
                         @foreach ($akademikSubmenu as $akademik)
                             <li>

@@ -23,7 +23,7 @@ class KemahasiswaanController extends Controller
 
     public function kemahasiswaan_detail($id)
     {
-        $dataKemahasiswaan = SubKemahasiswaan::find($id);
-        return view('frontend.pages.kemahasiswaan.kemahasiswaandetail', compact('dataKemahasiswaan'));
+        $item = SubKemahasiswaan::find($id);
+        return view('frontend.pages.kemahasiswaan.kemahasiswaandetail', compact('item'));
     }
 }

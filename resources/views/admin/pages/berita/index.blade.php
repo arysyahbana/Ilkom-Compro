@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('visimisi.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('pengumuman.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('visimisi.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('agenda.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('postinganberita.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="{{ route('dosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <a href="{{ route('publikasidosen.index') }}" class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="position-relative">
                         <div data-bs-toggle="modal" data-bs-target="#editgambar"
                             class="card shadow position-relative z-1 card-hover"

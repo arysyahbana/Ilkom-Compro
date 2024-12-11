@@ -33,7 +33,7 @@ class DosenController extends MasterController
     public function store(Request $request)
     {
         $imagePath = 'dosen';
-        $validated = $request->validate($this->model::$rules);
+        $validated = $request->validate($this->model::rules(false));
         $dosen = new Dosen();
 
         if ($request->hasFile('image')) {
@@ -123,7 +123,7 @@ class DosenController extends MasterController
     public function update(Request $request, $id)
     {
         $imagePath = 'dosen';
-        $validated = $request->validate($this->model::$rules);
+        $validated = $request->validate($this->model::rules(true));
         $dosen = Dosen::findOrFail($id);
         $dosen->nama = $request->input('nama');
 
@@ -146,7 +146,16 @@ class DosenController extends MasterController
         $dosen->pangkat_id = $request->input('pangkat_id');
         $dosen->golongan_id = $request->input('golongan_id');
         $dosen->jabatan_id = $request->input('jabatan_id');
-        $dosen->konsentrasi_id = $request->input('konsentrasi_id');
+
+        $dosen->kategori = $request->input('kategori');
+
+        if ($request->has('konsentrasi_id')) {
+            if ($request->input('kategori') == 'Kadep' || $request->input('kategori') == 'Dosen') {
+                $dosen->konsentrasi_id = $request->input('konsentrasi_id');
+            } else {
+                $dosen->konsentrasi_id = 1;
+            }
+        }
         $dosen->alamat_instansi = $request->input('alamat_instansi');
         $dosen->telpon = $request->input('telpon');
         $dosen->fax = $request->input('fax');
@@ -176,8 +185,12 @@ class DosenController extends MasterController
         $dosen->save();
 
         if ($request->has('bidang_kajian')) {
-            $bidangkajian = $request->input('bidang_kajian');
-            $dosen->rBidangkajian()->sync($bidangkajian);
+            if ($request->input('kategori') == 'Dosen' || $request->input('kategori') == 'Kadep') {
+                $bidangkajian = $request->input('bidang_kajian');
+                $dosen->rBidangkajian()->sync($bidangkajian);
+            } else {
+                $dosen->rBidangkajian()->detach();
+            }
         } else {
             $dosen->rBidangkajian()->detach();
         }

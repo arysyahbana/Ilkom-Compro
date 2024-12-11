@@ -2,40 +2,48 @@
 
 @section('content')
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/page-title-bg.webp)">
+    <div class="page-title dark-background" data-aos="fade"
+        style="background-image: url(/dist_frontend/assets/img/page-title-bg.webp)">
         <div class="container position-relative">
-            <h2 style="font-weight: bold">Prosedur Peringatan Masa Studi</h2>
+            <h2 style="font-weight: bold">{{ $item->judul ?? '' }}</h2>
         </div>
     </div>
     <!-- End Page Title -->
 
-    <!-- About 3 Section -->
-    <section id="recent-posts" class="recent-posts section">
-        <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-8 col-md-12 justify-content-center text-center">
-                    <img src="{{ asset('dist_frontend/assets/img/sop.png') }}" alt="Image" class="img-fluid" />
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Blog Details Section -->
+                <section id="blog-details" class="blog-details section">
+                    <div class="container">
+                        <article>
+                            <div class="meta-top">
+                                <ul>
+                                    <li class="d-flex align-items-center">
+                                        <i class="bi bi-clock"></i>
+                                        <time
+                                            datetime="2020-01-01">{{ $item->created_at ? \Carbon\Carbon::parse($item->created_at)->translatedFormat('l, d F Y') : '' }}</time>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="post-img mt-3">
+                                <img src="{{ asset('dist/assets/img/sop/' . $item->image ?? '') }}" alt=""
+                                    style="width: 100%" />
+                            </div>
+                            <div class="content">
+                                <p style="text-align: justify; padding-bottom: 10px">
+                                    Padang,
+                                    {{ $item->created_at ? \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') : '' }}
+                                    – {{ $item->isi_halaman ?? '' }}
+                                </p>
+                                <p>Link : <a href="{{ $item->link ?? '' }}" target="_blank">{{ $item->judul ?? '' }}</a></p>
+                            </div>
+                            <!-- End post content -->
+                        </article>
+                    </div>
+                </section>
+                <!-- /Blog Details Section -->
             </div>
         </div>
-    </section>
-    <!-- /About 3 Section -->
-
-    <!-- About 3 Section -->
-    <section id="recent-posts" class="recent-posts section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <p style="text-align: justify; color: #343434">
-                        Menjadikan Jurusan Ilmu Komunikasi FISIP Unand sebagai basis pengembangan ilmu dan praktik
-                        enterpreneur komunikasi khususnya di bidang Jurnalistik, Televisi dan Film, Public Relations, dan
-                        Manajemen Komunikasi di Indonesia
-                        pada tahun 2030.
-                    </p>
-                    <a href="ini merupakan link">Link</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- /About 3 Section -->
+    </div>
 @endsection

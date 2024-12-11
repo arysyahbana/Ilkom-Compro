@@ -10,14 +10,36 @@
                     <div class="tab-content mt-3">
                         <form action="{{ route('postinganberita.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label fw-bold">Gambar</label>
-                                <input class="form-control" type="file" id="formFile" name="image">
+                            <div class="d-flex gap-2 align-items-center">
+                                <div class="col-11">
+                                    <div class="mb-3" id="input1">
+                                        <label for="formFile" class="form-label fw-bold">Gambar</label>
+                                        <input class="form-control" type="file" id="formFile" name="image">
+                                    </div>
+
+                                    <div class="mb-3" id="input2" style="display: none">
+                                        <label for="link" class="form-label fw-bold">Link Youtube</label>
+                                        <input class="form-control" type="text" id="link" name="link">
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <div class="d-flex gap-2">
+                                        <div class="" id="button1Container" style="display: none">
+                                            <a href="#" class="btn btn-small btn-outline-warning" id="button1">Local
+                                                <img class="shadow" src="{{ asset('dist/assets/img/folder.png') }}"
+                                                    alt="" style="max-width: 20px" /></a>
+                                        </div>
+                                        <div class="" id="button2Container">
+                                            <a href="#" class="btn btn-small btn-outline-danger"
+                                                id="button2">Youtube
+                                                <img class="shadow" src="{{ asset('dist/assets/img/youtube.png') }}"
+                                                    alt="" style="max-width: 20px" /></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="link" class="form-label fw-bold">Link</label>
-                                <input class="form-control" type="text" id="link" name="link">
-                            </div>
+
                             <div class="mb-3">
                                 <label for="nama_penulis" class="form-label fw-bold">Nama Penulis</label>
                                 <input class="form-control" type="text" id="nama_penulis" name="nama_penulis">
@@ -40,4 +62,40 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const input1 = document.getElementById("input1");
+            const input2 = document.getElementById("input2");
+            const button1Container = document.getElementById("button1Container");
+            const button2Container = document.getElementById("button2Container");
+            const button1 = document.getElementById("button1");
+            const button2 = document.getElementById("button2");
+
+            input1.style.display = "block";
+            input2.style.display = "none";
+            button1Container.style.display = "none";
+            button2Container.style.display = "block";
+
+            button2.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                input1.style.display = "none";
+                button2Container.style.display = "none";
+
+                input2.style.display = "block";
+                button1Container.style.display = "block";
+            });
+
+            button1.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                input2.style.display = "none";
+                button1Container.style.display = "none";
+
+                input1.style.display = "block";
+                button2Container.style.display = "block";
+            });
+        });
+    </script>
 @endsection

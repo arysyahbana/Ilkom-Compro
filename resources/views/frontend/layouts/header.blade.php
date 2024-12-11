@@ -36,14 +36,16 @@
                 <li class="dropdown">
                     <a href="#"><span>Akademik</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="">Kurikulum</a></li>
-                        <li><a href="#">Akreditasi Departemen</a></li>
+                        <li><a href="{{ route('akademik.kurikulum') }}">Kurikulum</a></li>
+                        <li><a href="{{ route('akademik.akreditasi') }}">Akreditasi Departemen</a></li>
                         <li><a href="{{ route('akademik.sop') }}">SOP</a></li>
-                        <li><a href="#">Distribusi Mata Kuliah</a></li>
-                        <li><a href="#">Kalender Akademik</a></li>
-                        <li><a href="#">Jurnal Ilkom</a></li>
-                        <li><a href="#">Jurnal Komunikasi</a></li>
-                        <li><a href="#">Jurnal Ilmu</a></li>
+                        <li><a href="{{ asset('dist/assets/pdf/sinopsismatkul/' . $distribusiMatkul->pdf) }}"
+                                target="_blank">Distribusi Mata Kuliah</a></li>
+                        <li><a href="{{ asset('dist/assets/pdf/kalenderakademik/' . $kalenderAkademik->pdf) }}"
+                                target="_blank">Kalender Akademik</a></li>
+                        <li><a href="{{ route('akademik.konsentrasi-penjurusan') }}">Konsentrasi Penjurusan</a></li>
+                        <li><a href="{{ route('akademik.program-sarjana') }}">Program Sarjana</a></li>
+                        <li><a href="{{ route('akademik.jurnal') }}">Jurnal</a></li>
                         @foreach ($akademikSubmenu as $akademik)
                             <li>
                                 <a href="{{ $akademik->link ?? '' }}" target="_blank">{{ $akademik->judul ?? '' }}</a>
