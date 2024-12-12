@@ -19,9 +19,15 @@
                         return !empty($item->image) && empty($item->link);
                     });
 
+                    $filteredVideo = $dataBerita->filter(function ($item) {
+                        return !empty($item->link) && empty($item->image);
+                    });
+
                     $latestBerita = $filteredBerita->sortByDesc('created_at')->first();
                     $latestBerita4 = $filteredBerita->sortByDesc('created_at')->take(4);
                     $latestBerita8 = $filteredBerita->sortByDesc('created_at')->take(8);
+
+                    $latestVideo = $filteredVideo->sortByDesc('created_at')->take(8);
                 @endphp
                 <div class="col-lg-6 col-md-12">
                     <img src="{{ isset($latestBerita->image) ? asset('dist/assets/img/postinganberita/' . $latestBerita->image) : '' }}"
@@ -63,7 +69,6 @@
 
     <section id="recent-posts" class="recent-posts section">
         <div class="container">
-            <x-embed url="https://www.youtube.com/watch?v=4YCLRpKY1cs" />
             <div class="row">
                 <div class="container" data-aos="fade-up">
                     <h2 class="content-title mb-4" style="color: black; font-weight: bold">Berita Terkini</h2>
@@ -90,7 +95,8 @@
                                             </h3>
                                             <p>Padang,
                                                 {{ \Carbon\Carbon::parse($berita8->created_at)->translatedFormat('d F Y') }}
-                                                - {{ $berita8->isi_halaman ?? '' }}</p>
+                                                -
+                                                {{ \Illuminate\Support\Str::limit($berita8->isi_halaman ?? '', 200, '...') }}
                                         </div>
                                     </div>
                                 </a>
@@ -99,86 +105,24 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_1"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Video Profil
-                                Jurusan Ilmu Komunikasi...</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
+                    @foreach ($latestVideo as $video)
+                        <a href="{{ route('berita.beritadetail', $video->id) }}" class="">
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="col-5">
+                                    <x-embed url="{{ $video->link ?? '' }}" aspect-ratio="16:9" />
+                                </div>
+                                <div class="ms-3">
+                                    <p style="font-size: 14px; color: #b92383; margin: 0">{{ $video->judul ?? '' }}
+                                    </p>
+                                    <p style="font-size: 12px; color: #888888; margin: 0">
+                                        {{ $video && $video->created_at ? \Carbon\Carbon::parse($video->created_at)->translatedFormat('d F Y') : '' }}
+                                    </p>
+                                    <h5 class="text-wrap" style="font-size: 14px; color: black; margin: 5px 0">
+                                        {{ \Illuminate\Support\Str::limit($video->isi_halaman ?? '', 30, '...') }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

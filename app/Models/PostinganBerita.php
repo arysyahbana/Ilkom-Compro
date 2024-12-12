@@ -19,7 +19,7 @@ class PostinganBerita extends Model
 
     public static $rules = [
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'link' => 'nullable|string',
+        'link' => 'nullable|string|url',
         'nama_penulis' => 'required|string|max:255',
         'judul' => 'required|string|max:255',
         'isi_halaman' => 'required|string',

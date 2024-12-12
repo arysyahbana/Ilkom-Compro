@@ -61,10 +61,14 @@
                                 Pengumuman</li>
                             @foreach ($dataPengumuman as $pengumuman)
                                 <li class="list-group-item" style="color: white; background-color: #47245c">
-                                    <p style="color: #d4b6e5; font-size: 16px">
-                                        {{ $pengumuman->created_at ? \Carbon\Carbon::parse($pengumuman->created_at)->translatedFormat('l, d F Y') : '' }}
-                                    </p>
-                                    <p style="font-weight: bold; font-size: 16px">{{ $pengumuman->nama ?? '' }}</p>
+                                    <a href="{{ $pengumuman->link ?? '' }}" target="_blank">
+                                        <p style="color: #d4b6e5; font-size: 16px">
+                                            {{ $pengumuman->created_at ? \Carbon\Carbon::parse($pengumuman->created_at)->translatedFormat('l, d F Y') : '' }}
+                                        </p>
+                                        <p class="text-light" style="font-weight: bold; font-size: 16px">
+                                            {{ $pengumuman->nama ?? '' }}
+                                        </p>
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>

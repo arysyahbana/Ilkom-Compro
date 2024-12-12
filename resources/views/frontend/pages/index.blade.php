@@ -159,6 +159,17 @@
     <section id="recent-posts" class="recent-posts section">
         <div class="container">
             <div class="row">
+                @php
+                    $filteredBerita = $dataBerita->filter(function ($item) {
+                        return !empty($item->image) && empty($item->link);
+                    });
+                    $filteredVideo = $dataBerita->filter(function ($item) {
+                        return !empty($item->link) && empty($item->image);
+                    });
+
+                    $latestBerita = $filteredBerita->sortByDesc('created_at')->take(6);
+                    $latestVideo = $filteredVideo->sortByDesc('created_at')->take(4);
+                @endphp
                 <!-- Kolom Blog -->
                 <div class="col-lg-8 col-md-12 mb-4">
                     <div class="container" data-aos="fade-up">
@@ -166,29 +177,32 @@
                         <h2 class="content-title mb-4" style="color: black; font-weight: bold">Berita</h2>
                     </div>
                     <div class="row gy-5">
-                        @foreach ($dataBerita as $berita)
-                            <div class="col-lg-4 col-md-6">
-                                <a href="{{ route('berita.beritadetail', $berita->id) }}" class="readmore stretched-link">
-                                    <div data-aos="fade-up" data-aos-delay="100">
-                                        <div class="overflow-hidden" style="max-height: 150px">
-                                            <img src="{{ isset($berita->image) ? asset('dist/assets/img/postinganberita/' . $berita->image) : asset('dist_frontend/assets/img/img_sq_1.jpg') }}"
-                                                class="img-fluid" alt="{{ $berita->judul ?? '' }}"
-                                                style="width: 100%; object-fit: cover" />
-                                        </div>
-                                        <div style="margin-top: 10px">
-                                            <div style="display: flex; align-items: center; color: gray; font-size: 14px">
-                                                <i class="bi bi-calendar"></i>
-                                                <span style="margin-left: 5px">
-                                                    {{ $berita && $berita->created_at ? \Carbon\Carbon::parse($berita->created_at)->translatedFormat('l, d F Y') : '' }}
-                                                </span>
+                        @foreach ($latestBerita as $berita)
+                            @if ($berita->image)
+                                <div class="col-lg-4 col-md-6">
+                                    <a href="{{ route('berita.beritadetail', $berita->id) }}" class="">
+                                        <div data-aos="fade-up" data-aos-delay="100">
+                                            <div class="overflow-hidden" style="max-height: 150px">
+                                                <img src="{{ isset($berita->image) ? asset('dist/assets/img/postinganberita/' . $berita->image) : asset('dist_frontend/assets/img/img_sq_1.jpg') }}"
+                                                    class="img-fluid" alt="{{ $berita->judul ?? '' }}"
+                                                    style="width: 100%; object-fit: cover" />
                                             </div>
-                                            <h3 class="text-wrap"
-                                                style="color: black; font-size: 16px; margin-top: 5px; font-weight: bold">
-                                                {{ $berita->judul ?? '' }}</h3>
+                                            <div style="margin-top: 10px">
+                                                <div
+                                                    style="display: flex; align-items: center; color: gray; font-size: 14px">
+                                                    <i class="bi bi-calendar"></i>
+                                                    <span style="margin-left: 5px">
+                                                        {{ $berita && $berita->created_at ? \Carbon\Carbon::parse($berita->created_at)->translatedFormat('l, d F Y') : '' }}
+                                                    </span>
+                                                </div>
+                                                <h3 class="text-wrap"
+                                                    style="color: black; font-size: 16px; margin-top: 5px; font-weight: bold">
+                                                    {{ $berita->judul ?? '' }}</h3>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -199,28 +213,24 @@
                         <p style="color: #b92383">Karya-karya Ilmu Komunikasi</p>
                         <h2 class="content-title mb-4" style="color: black; font-weight: bold">Video Kami</h2>
                     </div>
-                    <!-- Video 1 -->
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_1"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Video
-                                Profil Jurusan Ilmu Komunikasi...</h3>
-                        </div>
-                    </div>
-                    <!-- Video 2 -->
-                    <div class="d-flex align-items-start mb-4">
-                        <iframe class="img-fluid" src="https://www.youtube.com/embed/VIDEO_ID_2"
-                            style="width: 150px; height: 90px; border: none; flex-shrink: 0" allowfullscreen></iframe>
-                        <div class="ms-3">
-                            <p style="font-size: 14px; color: #b92383; margin: 0">Ranah Komunikasi UNAND</p>
-                            <p style="font-size: 12px; color: #888888; margin: 0">12 Agustus 2024</p>
-                            <h3 style="font-size: 14px; color: black; font-weight: bold; margin: 5px 0">Karya Video
-                                Dokumenter Departemen...</h3>
-                        </div>
-                    </div>
+                    @foreach ($latestVideo as $video)
+                        <a href="{{ route('berita.beritadetail', $video->id) }}" class="">
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="col-5">
+                                    <x-embed url="{{ $video->link ?? '' }}" aspect-ratio="16:9" />
+                                </div>
+                                <div class="ms-3">
+                                    <p style="font-size: 14px; color: #b92383; margin: 0">{{ $video->judul ?? '' }}
+                                    </p>
+                                    <p style="font-size: 12px; color: #888888; margin: 0">
+                                        {{ $video && $video->created_at ? \Carbon\Carbon::parse($video->created_at)->translatedFormat('d F Y') : '' }}
+                                    </p>
+                                    <h5 class="text-wrap" style="font-size: 14px; color: black; margin: 5px 0">
+                                        {{ \Illuminate\Support\Str::limit($video->isi_halaman ?? '', 30, '...') }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -235,7 +245,8 @@
                     <p style="color: #b92383">Kegiatan Kami</p>
                     <h2 class="content-title mb-4" style="color: black; font-weight: bold">Agenda Departemen</h2>
                     <div class="col-xl-12 col-md-6">
-                        <a href="blog-details.html" class="readmore stretched-link">
+                        <a href="{{ route('berita.agendadetail', $dataAgenda->id ?? '') }}"
+                            class="readmore stretched-link">
                             <div data-aos="fade-up" data-aos-delay="100">
                                 <div>
                                     <img src="{{ isset($dataAgenda->image) ? asset('dist/assets/img/agenda/' . $dataAgenda->image) : asset('dist_frontend/assets/img/img_sq_1.jpg') }}"
@@ -248,7 +259,8 @@
                                             {{ $dataAgenda && $dataAgenda->created_at ? \Carbon\Carbon::parse($dataAgenda->created_at)->translatedFormat('l, d F Y') : '' }}
                                         </span>
                                     </div>
-                                    <h3 style="color: black; font-size: 16px; margin-top: 5px; font-weight: bold">
+                                    <h3 class="text-wrap"
+                                        style="color: black; font-size: 16px; margin-top: 5px; font-weight: bold">
                                         {{ $dataAgenda->judul ?? '' }}
                                     </h3>
                                 </div>
@@ -265,11 +277,14 @@
                                     Pengumuman</li>
                                 @foreach ($dataPengumuman as $pengumuman)
                                     <li class="list-group-item" style="color: white; background-color: #47245c">
-                                        <p style="color: #d4b6e5; font-size: 16px">
-                                            {{ $pengumuman->created_at ? \Carbon\Carbon::parse($pengumuman->created_at)->translatedFormat('l, d F Y') : '' }}
-                                        </p>
-                                        <p style="font-weight: bold; font-size: 16px">{{ $pengumuman->nama ?? '' }}
-                                        </p>
+                                        <a href="{{ $pengumuman->link ?? '' }}" target="_blank">
+                                            <p style="color: #d4b6e5; font-size: 16px">
+                                                {{ $pengumuman->created_at ? \Carbon\Carbon::parse($pengumuman->created_at)->translatedFormat('l, d F Y') : '' }}
+                                            </p>
+                                            <p class="text-light" style="font-weight: bold; font-size: 16px">
+                                                {{ $pengumuman->nama ?? '' }}
+                                            </p>
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>

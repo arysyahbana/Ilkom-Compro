@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $dataFakultas = Fakultas::first();
         $dataGaleri = GaleriIlkom::all();
-        $dataBerita = PostinganBerita::latest()->limit(3)->get();
+        $dataBerita = PostinganBerita::latest()->get();
         $dataPengumuman = Pengumuman::latest()->limit(4)->get();
         $dataAgenda = Agenda::latest()->limit(1)->first();
         return view('frontend.pages.index', compact('dataFakultas', 'dataGaleri', 'dataBerita', 'dataPengumuman', 'dataAgenda'));

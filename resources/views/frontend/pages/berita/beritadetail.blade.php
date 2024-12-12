@@ -31,8 +31,16 @@
                                 </ul>
                             </div>
                             <div class="post-img mt-3">
-                                <img src="{{ asset('dist/assets/img/postinganberita/' . $dataBerita->image ?? '') }}"
-                                    alt="" style="width: 100%" />
+                                @if ($dataBerita->image)
+                                    <img src="{{ asset('dist/assets/img/postinganberita/' . $dataBerita->image ?? '') }}"
+                                        alt="" style="width: 100%" />
+                                @elseif ($dataBerita->link)
+                                    {{-- <div style="max-width: 100%; border: 1px overflow: hidden; border-radius: 8px;"> --}}
+                                    <x-embed url="{{ $dataBerita->link ?? '' }}" aspect-ratio="16:9" />
+                                    {{-- </div> --}}
+                                @else
+                                    <p>Tidak Ada Cover</p>
+                                @endif
                             </div>
                             <div class="content">
                                 <p style="text-align: justify; padding-bottom: 10px">
@@ -50,13 +58,18 @@
                         <div class="row gy-5">
                             @foreach ($randomBerita as $random)
                                 <div class="col-lg-4 col-md-6">
-                                    <a href="{{ route('berita.beritadetail', $random->id) }}"
-                                        class="readmore stretched-link">
+                                    <a href="{{ route('berita.beritadetail', $random->id) }}" class="">
                                         <div data-aos="fade-up" data-aos-delay="100">
                                             <div class="overflow-hidden" style="max-height: 150px">
-                                                <img src="{{ asset('dist/assets/img/postinganberita/' . $random->image ?? '') }}"
-                                                    class="img-fluid" alt="{{ $random->judul ?? '' }}"
-                                                    style="width: 100%; object-fit: cover" />
+                                                @if ($random->image)
+                                                    <img src="{{ asset('dist/assets/img/postinganberita/' . $random->image ?? '') }}"
+                                                        class="img-fluid" alt="{{ $random->judul ?? '' }}"
+                                                        style="width: 100%; object-fit: cover" />
+                                                @elseif ($random->link)
+                                                    <x-embed url="{{ $random->link ?? '' }}" aspect-ratio="16:9" />
+                                                @else
+                                                    <p>Tidak Ada Cover</p>
+                                                @endif
                                             </div>
                                             <div style="margin-top: 10px">
                                                 <div
