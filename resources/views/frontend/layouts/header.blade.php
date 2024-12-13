@@ -39,10 +39,18 @@
                         <li><a href="{{ route('akademik.kurikulum') }}">Kurikulum</a></li>
                         <li><a href="{{ route('akademik.akreditasi') }}">Akreditasi Departemen</a></li>
                         <li><a href="{{ route('akademik.sop') }}">SOP</a></li>
-                        <li><a href="{{ asset('dist/assets/pdf/sinopsismatkul/' . $distribusiMatkul->pdf) }}"
-                                target="_blank">Distribusi Mata Kuliah</a></li>
-                        <li><a href="{{ asset('dist/assets/pdf/kalenderakademik/' . $kalenderAkademik->pdf) }}"
-                                target="_blank">Kalender Akademik</a></li>
+                        <li>
+                            <a href="{{ isset($distribusiMatkul) && $distribusiMatkul->pdf ? asset('dist/assets/pdf/sinopsismatkul/' . $distribusiMatkul->pdf) : '#' }}"
+                                target="{{ isset($distribusiMatkul) && $distribusiMatkul->pdf ? '_blank' : '' }}">
+                                Distribusi Mata Kuliah
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ isset($kalenderAkademik) && $kalenderAkademik->pdf ? asset('dist/assets/pdf/kalenderakademik/' . $kalenderAkademik->pdf) : '#' }}"
+                                target="{{ isset($kalenderAkademik) && $kalenderAkademik->pdf ? '_blank' : '' }}">
+                                Kalender Akademik
+                            </a>
+                        </li>
                         <li><a href="{{ route('akademik.konsentrasi-penjurusan') }}">Konsentrasi Penjurusan</a></li>
                         <li><a href="{{ route('akademik.program-sarjana') }}">Program Sarjana</a></li>
                         <li><a href="{{ route('akademik.jurnal') }}">Jurnal</a></li>
