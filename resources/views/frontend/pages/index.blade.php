@@ -366,4 +366,22 @@
         </div>
     </section>
     <!-- /Services 2 Section -->
+
+    {{-- Maps --}}
+    <section>
+        <!-- Section Title -->
+        <div class="container" style="justify-content: left; text-align: left !important" data-aos="fade-up">
+            <p style="color: #b92383">Lokasi Departemen</p>
+            <h2 class="content-title mb-4" style="color: black; font-weight: bold">Map</h2>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.3078007865197!2d100.4602634!3d-0.9165831999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b796db1f63a5%3A0x7a16861d110f88dd!2sFakultas%20Ilmu%20Sosial%20dan%20Ilmu%20Politik%20Universitas%20Andalas%20(FISIP%20Unand)!5e0!3m2!1sid!2sid!4v1734186621061!5m2!1sid!2sid"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    {{-- /Maps --}}
 @endsection
