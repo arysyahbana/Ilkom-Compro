@@ -17,13 +17,13 @@
 
             <li class="side-nav-title side-nav-item">Navigation</li>
 
-            <li class="side-nav-item">
+            {{-- <li class="side-nav-item">
                 <a href="{{ route('dashboard') }}" class="side-nav-link">
                     <i class="uil-home-alt"></i>
-                    {{-- <span class="badge bg-success float-end">4</span> --}}
+                    <span class="badge bg-success float-end">4</span>
                     <span> Dashboards </span>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false"

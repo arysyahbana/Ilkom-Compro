@@ -20,6 +20,6 @@ class Jurnal extends Model
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'link' => 'required|string',
         'judul' => 'required|string|max:255',
-        'isi_halaman' => 'required|string',
+        'isi_halaman' => 'nullable|string',
     ];
 }

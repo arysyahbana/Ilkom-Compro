@@ -354,8 +354,11 @@
                                             <h2 class="service-item-title">{{ $galeri->nama_kegiatan ?? '' }}</h2>
                                         </a>
                                     </div>
-                                    <img src="{{ asset('dist/assets/img/galeriilkom/' . $galeri->image ?? '') }}"
-                                        alt="{{ $galeri->nama_kegiatan ?? '' }}" class="img-fluid" />
+                                    <div style="max-height: 250px; overflow: hidden; border-radius: 0.9rem;">
+                                        <img src="{{ asset('dist/assets/img/galeriilkom/' . $galeri->image ?? '') }}"
+                                            alt="{{ $galeri->nama_kegiatan ?? '' }}" class="card-img-top img-fluid"
+                                            style="object-fit: cover; min-height: 250px">
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

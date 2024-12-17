@@ -55,7 +55,7 @@
                                             <div class="overflow-hidden" style="max-height: 150px">
                                                 <img src="{{ asset('dist/assets/img/agenda/' . $random->image ?? '') }}"
                                                     class="img-fluid" alt="{{ $random->judul ?? '' }}"
-                                                    style="width: 100%; object-fit: cover" />
+                                                    style="width: 100%; object-fit: cover; min-height: 150px" />
                                             </div>
                                             <div style="margin-top: 10px">
                                                 <div

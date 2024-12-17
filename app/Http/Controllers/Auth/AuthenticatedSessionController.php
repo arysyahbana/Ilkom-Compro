@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // return redirect()->intended(RouteServiceProvider::HOME);
-        return redirect()->intended('/dashboard')->with('success', 'Selamat datang ' . Auth::user()->name);
+        return redirect()->intended('/fakultas/index')->with('success', 'Selamat datang ' . Auth::user()->name);
     }
 
     /**

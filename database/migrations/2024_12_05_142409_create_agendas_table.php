@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('link');
             $table->string('nama_penulis');
             $table->string('judul');
-            $table->text('isi_halaman');
+            $table->text('isi_halaman')->nullable();
             $table->timestamps();
         });
     }

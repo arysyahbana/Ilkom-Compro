@@ -22,6 +22,6 @@ class Agenda extends Model
         'link' => 'required|string',
         'nama_penulis' => 'required|string|max:255',
         'judul' => 'required|string|max:255',
-        'isi_halaman' => 'required|string',
+        'isi_halaman' => 'nullable|string',
     ];
 }

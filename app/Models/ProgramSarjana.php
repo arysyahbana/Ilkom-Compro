@@ -18,6 +18,6 @@ class ProgramSarjana extends Model
     public static $rules = [
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'judul' => 'required|string|max:255',
-        'isi_halaman' => 'required|string',
+        'isi_halaman' => 'nullable|string',
     ];
 }

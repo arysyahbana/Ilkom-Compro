@@ -13,7 +13,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="konsentrasi" class="form-label">Konsentrasi</label>
-                                <input type="text" name="konsentrasi" class="form-control" id="konsentrasi">
+                                <input type="text" name="konsentrasi" class="form-control" id="konsentrasi"
+                                    value="{{ old('konsentrasi') }}">
                             </div>
                             <button type="submit" class="btn form-control text-light"
                                 style="background-color: #47245C">Submit</button>

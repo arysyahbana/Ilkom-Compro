@@ -13,7 +13,7 @@
             </div>
         </li>
 
-        <li class="dropdown notification-list">
+        {{-- <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
                 aria-haspopup="false" aria-expanded="false">
                 <i class="dripicons-bell noti-icon"></i>
@@ -157,7 +157,7 @@
                 </div>
 
             </div>
-        </li>
+        </li> --}}
 
         {{-- <li class="notification-list">
                             <a class="nav-link end-bar-toggle" href="javascript: void(0);">
@@ -183,7 +183,7 @@
                 </div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-circle me-1"></i>
                     <span>My Account</span>
                 </a>
@@ -204,7 +204,7 @@
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-lock-outline me-1"></i>
                     <span>Lock Screen</span>
-                </a>
+                </a> --}}
 
                 <!-- item-->
                 <form method="POST" action="{{ route('logout') }}">

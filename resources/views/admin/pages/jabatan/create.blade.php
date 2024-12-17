@@ -13,7 +13,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="jabatan" class="form-label">Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" id="jabatan">
+                                <input type="text" name="jabatan" class="form-control" id="jabatan"
+                                    value="{{ old('jabatan') }}">
                             </div>
                             <button type="submit" class="btn form-control text-light"
                                 style="background-color: #47245C; border-radius: 0.5rem">Submit</button>

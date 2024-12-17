@@ -13,7 +13,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="pangkat" class="form-label">Pangkat</label>
-                                <input type="text" name="pangkat" class="form-control" id="pangkat">
+                                <input type="text" name="pangkat" class="form-control" id="pangkat"
+                                    value="{{ old('pangkat') }}">
                             </div>
                             <button type="submit" class="btn form-control text-light"
                                 style="background-color: #47245C; color: white">Submit</button>

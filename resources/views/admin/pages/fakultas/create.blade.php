@@ -16,28 +16,28 @@
                                     <div class="mb-3">
                                         <label for="jml_mahasiswa" class="form-label fw-bold">Jumlah Mahasiswa</label>
                                         <input type="number" name="jml_mahasiswa" class="form-control" id="jml_mahasiswa"
-                                            placeholder="Masukkan Jumlah Mahasiswa">
+                                            placeholder="Masukkan Jumlah Mahasiswa" value="{{ old('jml_mahasiswa') }}">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="jml_dosen" class="form-label fw-bold">Jumlah Dosen</label>
                                         <input type="number" name="jml_dosen" class="form-control" id="jml_dosen"
-                                            placeholder="Masukkan Jumlah Dosen">
+                                            placeholder="Masukkan Jumlah Dosen" value="{{ old('jml_dosen') }}">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="jml_publikasi" class="form-label fw-bold">Jumlah Publikasi</label>
                                         <input type="number" name="jml_publikasi" class="form-control" id="jml_publikasi"
-                                            placeholder="Masukkan Jumlah Publikasi">
+                                            placeholder="Masukkan Jumlah Publikasi" value="{{ old('jml_publikasi') }}">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="jml_alumni" class="form-label fw-bold">Jumlah Alumni</label>
                                         <input type="number" name="jml_alumni" class="form-control" id="jml_alumni"
-                                            placeholder="Masukkan Jumlah Alumni">
+                                            placeholder="Masukkan Jumlah Alumni" value="{{ old('jml_alumni') }}">
                                     </div>
                                 </div>
                             </div>
