@@ -101,7 +101,9 @@
                                 </a>
                             </div>
                         @endforeach
-                        {{ $latestBerita8->links() }}
+                        <div class="d-flex justify-content-start">
+                            {{ $latestBerita8->links() }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">

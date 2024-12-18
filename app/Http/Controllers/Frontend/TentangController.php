@@ -26,6 +26,13 @@ class TentangController extends Controller
         $dosen = Dosen::with('rBidangkajian', 'rPangkat', 'rGolongan', 'rJabatan', 'rKonsentrasi')->get();
         return view('frontend.pages.tentang.dosen', compact('dosen'));
     }
+    public function dosen_detail($id)
+    {
+        $data = Dosen::with('rBidangkajian', 'rPangkat', 'rGolongan', 'rJabatan', 'rKonsentrasi')
+            ->where('id', $id)
+            ->first();
+        return view('frontend.pages.tentang.dosendetail', compact('data'));
+    }
     public function struktur()
     {
         $dataStruktur = StrukturOrganisasi::first();

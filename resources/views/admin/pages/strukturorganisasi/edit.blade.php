@@ -32,7 +32,7 @@
                             <div class="mb-3">
                                 <label for="isi_halaman" class="form-label fw-bold">Isi Halaman</label>
                                 <textarea id="isi_halaman" rows="10" name="isi_halaman" class="form-control">
-                                    {{ $dataStrukturOrganisasi->isi_halaman ?? '' }}
+                                    {{ trim($dataStrukturOrganisasi->isi_halaman ?? '') }}
                                 </textarea>
                             </div>
 

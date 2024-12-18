@@ -54,6 +54,7 @@ Route::prefix('tentang')->group(function () {
     Route::get('/sejarah', [FrontendTentangController::class, 'sejarah'])->name('tentang.sejarah');
     Route::get('/visimisi', [FrontendTentangController::class, 'visimisi'])->name('tentang.visimisi');
     Route::get('/dosen', [FrontendTentangController::class, 'dosen'])->name('tentang.dosen');
+    Route::get('/dosen/{id}', [FrontendTentangController::class, 'dosen_detail'])->name('tentang.dosendetail');
     Route::get('/struktur', [FrontendTentangController::class, 'struktur'])->name('tentang.struktur');
 });
 Route::prefix('berita')->group(function () {

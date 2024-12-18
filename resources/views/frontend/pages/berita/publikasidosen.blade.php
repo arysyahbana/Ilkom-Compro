@@ -18,12 +18,12 @@
                     <div class="row gy-5">
                         @foreach ($dataPublikasi as $publikasi)
                             <div class="col-lg-3 col-md-6">
-                                <a href="{{ route('berita.publikasidetail', $publikasi->id ?? '') }}"
-                                    class="readmore stretched-link">
+                                <a href="{{ route('berita.publikasidetail', $publikasi->id ?? '') }}" class="">
                                     <div data-aos="fade-up" data-aos-delay="100">
-                                        <div>
+                                        <div class="overflow-hidden" style="max-height: 200px">
                                             <img src="{{ asset('dist/assets/img/publikasidosen/' . $publikasi->image ?? '') }}"
-                                                class="img-fluid" alt="" />
+                                                class="img-fluid" alt="{{ $berita8->judul ?? '' }}"
+                                                style="width: 100%; object-fit: cover; min-height: 200px" />
                                         </div>
                                         <div style="margin-top: 10px">
                                             <div style="display: flex; align-items: center; color: gray; font-size: 14px">
@@ -42,6 +42,9 @@
                                 </a>
                             </div>
                         @endforeach
+                        <div class="d-flex justify-content-start">
+                            {{ $dataPublikasi->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ class BeritaController extends Controller
         $latestBerita8 = PostinganBerita::whereNotNull('image')
             ->whereNull('link')
             ->orderBy('created_at', 'desc')
-            ->paginate(3);
+            ->paginate(8);
         return view('frontend.pages.berita.berita', compact('dataBerita', 'latestBerita8'));
     }
 
@@ -31,7 +31,7 @@ class BeritaController extends Controller
 
     public function agenda()
     {
-        $dataAgenda = Agenda::latest()->get();
+        $dataAgenda = Agenda::latest()->paginate(8);
         $dataPengumuman = Pengumuman::latest()->get();
         return view('frontend.pages.berita.agenda', compact('dataAgenda', 'dataPengumuman'));
     }
@@ -46,7 +46,7 @@ class BeritaController extends Controller
 
     public function publikasi_dosen()
     {
-        $dataPublikasi = PublikasiDosen::latest()->get();
+        $dataPublikasi = PublikasiDosen::latest()->paginate(8);
         return view('frontend.pages.berita.publikasidosen', compact('dataPublikasi'));
     }
 

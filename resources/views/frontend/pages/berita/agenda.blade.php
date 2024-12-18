@@ -51,6 +51,9 @@
                                 </a>
                             </div>
                         @endforeach
+                        <div class="d-flex justify-content-start">
+                            {{ $dataAgenda->links() }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
