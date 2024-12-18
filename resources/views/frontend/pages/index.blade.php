@@ -174,7 +174,10 @@
                 <div class="col-lg-8 col-md-12 mb-4">
                     <div class="container" data-aos="fade-up">
                         <p style="color: #b92383">Cerita Departemen Ilmu Komunikasi</p>
-                        <h2 class="content-title mb-4" style="color: black; font-weight: bold">Berita</h2>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2 class="content-title mb-4" style="color: black; font-weight: bold">Berita</h2>
+                            <a href="{{ route('berita.berita') }}" class=""><u>Lihat Semua</u></a>
+                        </div>
                     </div>
                     <div class="row gy-5">
                         @foreach ($latestBerita as $berita)
@@ -289,6 +292,17 @@
                                 @endforeach
                             </ul>
                         </div>
+                        <a href="{{ route('berita.agenda') }}" class="btn mt-4 fw-bold"
+                            style=" border: 2px solid #47245c; color: #47245c; text-decoration: none; display: inline-flex; align-items: center; padding: 10px 15px; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;"
+                            onmouseover="this.style.backgroundColor='#47245c'; this.style.color='#fff';"
+                            onmouseout="this.style.backgroundColor=''; this.style.color='#47245c';">
+                            Lebih Lengkap
+                            <img src="{{ asset('dist_frontend/assets/img/Arrow 1.svg') }}" alt=""
+                                style="margin-left: 10px; transition: transform 0.3s ease;"
+                                onmouseover="this.style.transform='translateX(5px)'"
+                                onmouseout="this.style.transform='translateX(0)'">
+                        </a>
+
                     </div>
                 </div>
             </div>

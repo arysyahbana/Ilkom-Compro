@@ -25,7 +25,6 @@
 
                     $latestBerita = $filteredBerita->sortByDesc('created_at')->first();
                     $latestBerita4 = $filteredBerita->sortByDesc('created_at')->take(4);
-                    $latestBerita8 = $filteredBerita->sortByDesc('created_at')->take(8);
 
                     $latestVideo = $filteredVideo->sortByDesc('created_at')->take(8);
                 @endphp
@@ -102,6 +101,7 @@
                                 </a>
                             </div>
                         @endforeach
+                        {{ $latestBerita8->links() }}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">

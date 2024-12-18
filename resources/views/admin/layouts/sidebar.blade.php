@@ -1,7 +1,7 @@
 <div class="leftside-menu">
 
     <!-- LOGO -->
-    <a href="index.html" class="logo text-center logo-light mt-2">
+    <a href="{{ route('fakultas.index') }}" class="logo text-center logo-light mt-2">
         <span class="logo-lg">
             <img src="{{ asset('dist/images/logo.svg') }}" alt="">
         </span>

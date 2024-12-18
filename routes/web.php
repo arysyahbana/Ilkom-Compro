@@ -84,9 +84,9 @@ Route::prefix('kemahasiswaan')->group(function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.pages.dashboard.index');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('admin.pages.dashboard.index');
+    // })->name('dashboard');
 
     Route::prefix('visi-misi')->group(function () {
         Route::get('/index', [VisiMisiController::class, 'index'])->name('visimisi.index');

@@ -14,7 +14,11 @@ class BeritaController extends Controller
     public function berita()
     {
         $dataBerita = PostinganBerita::all();
-        return view('frontend.pages.berita.berita', compact('dataBerita'));
+        $latestBerita8 = PostinganBerita::whereNotNull('image')
+            ->whereNull('link')
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+        return view('frontend.pages.berita.berita', compact('dataBerita', 'latestBerita8'));
     }
 
     public function berita_detail($id)
