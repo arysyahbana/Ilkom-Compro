@@ -40,14 +40,12 @@
                         <li><a href="{{ route('akademik.akreditasi') }}">Akreditasi Departemen</a></li>
                         <li><a href="{{ route('akademik.sop') }}">SOP</a></li>
                         <li>
-                            <a href="{{ isset($distribusiMatkul) && $distribusiMatkul->pdf ? asset('dist/assets/pdf/sinopsismatkul/' . $distribusiMatkul->pdf) : '#' }}"
-                                target="{{ isset($distribusiMatkul) && $distribusiMatkul->pdf ? '_blank' : '' }}">
+                            <a href="{{ route('akademik.sinopsismatkul') }}">
                                 Distribusi Mata Kuliah
                             </a>
                         </li>
                         <li>
-                            <a href="{{ isset($kalenderAkademik) && $kalenderAkademik->pdf ? asset('dist/assets/pdf/kalenderakademik/' . $kalenderAkademik->pdf) : '#' }}"
-                                target="{{ isset($kalenderAkademik) && $kalenderAkademik->pdf ? '_blank' : '' }}">
+                            <a href="{{ route('akademik.kalenderakademik') }}">
                                 Kalender Akademik
                             </a>
                         </li>

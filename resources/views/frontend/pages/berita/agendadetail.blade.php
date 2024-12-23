@@ -26,8 +26,6 @@
                                             href="{{ route('berita.agendadetail', $dataAgenda->id) }}"><time
                                                 datetime="2020-01-01">{{ $dataAgenda->created_at ? \Carbon\Carbon::parse($dataAgenda->created_at)->translatedFormat('l, d F Y') : '' }}</time></a>
                                     </li>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                            href="{{ route('berita.agendadetail', $dataAgenda->id) }}">12 Comments</a></li>
                                 </ul>
                             </div>
                             <div class="post-img mt-3">

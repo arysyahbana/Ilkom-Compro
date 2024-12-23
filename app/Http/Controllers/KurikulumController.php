@@ -14,73 +14,59 @@ class KurikulumController extends MasterController
         $this->viewPath = 'admin.pages.kurikulum';
     }
 
-    public function create()
+    public function show($id)
     {
-        abort(404);
+        $kurikulum = Kurikulum::find($id);
+        return view($this->viewPath . '.show', compact('kurikulum'));
     }
 
-    public function store(Request $request)
-    {
-        abort(404);
-    }
+    // public function manage()
+    // {
+    //     $dataKurikulum = Kurikulum::first();
+    //     if ($dataKurikulum) {
+    //         return view('admin.pages.kurikulum.edit', compact('dataKurikulum'));
+    //     } else {
+    //         return view('admin.pages.kurikulum.create');
+    //     }
+    // }
 
-    public function update(Request $request, $id)
-    {
-        abort(404);
-    }
+    // public function manageStore(Request $request)
+    // {
+    //     $imagePath = 'kurikulum';
+    //     $validated = $request->validate($this->model::$rules);
+    //     if ($request->hasFile('image')) {
+    //         $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
+    //         $validated['image'] = $imageName;
+    //     }
+    //     $this->model::create($validated);
+    //     return redirect()->route('kurikulum.manage')->with('success', 'Data created successfully');
+    // }
 
-    public function destroy($id)
-    {
-        abort(404);
-    }
+    // public function edit($id)
+    // {
+    //     $dataKurikulum = Kurikulum::findOrFail($id);
+    //     return view('admin.pages.kurikulum.edit', compact('dataKurikulum'));
+    // }
 
-    public function manage()
-    {
-        $dataKurikulum = Kurikulum::first();
-        if ($dataKurikulum) {
-            return view('admin.pages.kurikulum.edit', compact('dataKurikulum'));
-        } else {
-            return view('admin.pages.kurikulum.create');
-        }
-    }
+    // public function manageUpdate(Request $request, $id)
+    // {
+    //     $dataKurikulum = Kurikulum::findOrFail($id);
 
-    public function manageStore(Request $request)
-    {
-        $imagePath = 'kurikulum';
-        $validated = $request->validate($this->model::$rules);
-        if ($request->hasFile('image')) {
-            $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
-            $validated['image'] = $imageName;
-        }
-        $this->model::create($validated);
-        return redirect()->route('kurikulum.manage')->with('success', 'Data created successfully');
-    }
+    //     $validated = $request->validate($this->model::$rules);
 
-    public function edit($id)
-    {
-        $dataKurikulum = Kurikulum::findOrFail($id);
-        return view('admin.pages.kurikulum.edit', compact('dataKurikulum'));
-    }
+    //     $imagePath = 'kurikulum';
 
-    public function manageUpdate(Request $request, $id)
-    {
-        $dataKurikulum = Kurikulum::findOrFail($id);
+    //     if ($request->hasFile('image')) {
+    //         if ($dataKurikulum->image) {
+    //             GlobalFunction::deleteImage($dataKurikulum->image, $imagePath);
+    //         }
 
-        $validated = $request->validate($this->model::$rules);
+    //         $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
+    //         $validated['image'] = $imageName;
+    //     }
 
-        $imagePath = 'kurikulum';
+    //     $dataKurikulum->update($validated);
 
-        if ($request->hasFile('image')) {
-            if ($dataKurikulum->image) {
-                GlobalFunction::deleteImage($dataKurikulum->image, $imagePath);
-            }
-
-            $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
-            $validated['image'] = $imageName;
-        }
-
-        $dataKurikulum->update($validated);
-
-        return redirect()->route('kurikulum.edit', $id)->with('success', 'Data updated successfully');
-    }
+    //     return redirect()->route('kurikulum.edit', $id)->with('success', 'Data updated successfully');
+    // }
 }

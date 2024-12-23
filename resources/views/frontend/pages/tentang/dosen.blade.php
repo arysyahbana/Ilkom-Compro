@@ -20,7 +20,7 @@
                                 <div class="card mb-3" style="min-height: 250px">
                                     <div class="row g-0">
                                         <div class="col-md-5 p-2">
-                                            <div class="overflow-hidden" style="height: 230px; max-width: 200px">
+                                            <div class="overflow-hidden" style="height: 250px; width: 170px">
                                                 <img src="{{ asset('dist/assets/img/dosen/' . $item->image) }}"
                                                     alt="Image" class="img-fluid rounded-4 img-thumbnail"
                                                     style="width: 100%; height: 100%; object-fit: cover;" />
@@ -60,16 +60,24 @@
                                 <div class="card mb-3" style="min-height: 250px">
                                     <div class="row g-0">
                                         <div class="col-md-5 p-2">
-                                            <div class="overflow-hidden" style="height: 230px; max-width: 200px">
+                                            <div class="overflow-hidden" style="height: 250px; width: 170px">
                                                 <img src="{{ asset('dist/assets/img/dosen/' . $item->image) }}"
-                                                    alt="Image" class="img-fluid rounded-4"
+                                                    alt="Image" class="img-fluid rounded-4 img-thumbnail"
                                                     style="width: 100%; height: 100%; object-fit: cover;" />
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="card-body">
                                                 <p style="font-size: 12px; color: #b92383; margin: 5px 0">
-                                                    {{ $item->kategori ?? '' }}
+                                                    @if ($item->kategori == 'Dosen')
+                                                        Dosen
+                                                        <br>
+                                                        Ilmu Komunikasi
+                                                    @else
+                                                        Staff Akademik
+                                                        <br>
+                                                        Ilmu Komunikasi
+                                                    @endif
                                                 </p>
                                                 <h5 style="font-weight: bold; margin: 5px 0">{{ $item->nama ?? '' }}</h5>
                                                 <h6 style="color: #b5b1b1; margin: 5px 0">{{ $item->nip ?? '' }}</h6>

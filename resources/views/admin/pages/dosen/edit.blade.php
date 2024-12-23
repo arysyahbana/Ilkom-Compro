@@ -19,7 +19,8 @@
                                 Kepala Departemen
                             </option>
                             <option value="Dosen" {{ $item->kategori == 'Dosen' ? 'selected' : '' }}>Dosen</option>
-                            <option value="Staff" {{ $item->kategori == 'Staff' ? 'selected' : '' }}>Staff</option>
+                            <option value="Staff" {{ $item->kategori == 'Staff' ? 'selected' : '' }}>Staff Akademik
+                            </option>
                         </select>
                     </div>
                 </div>

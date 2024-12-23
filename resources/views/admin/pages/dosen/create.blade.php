@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-between pb-2 align-items-center">
                     <h3 class="mb-3 col-10" style="color: #47245C">Create Dosen</h3>
                     <select class="form-select" name="kategori" id="kategori">
-                        <option value="Staff">Staff</option>
+                        <option value="Staff">Staff Akademik</option>
                         <option value="Dosen">Dosen</option>
                         <option value="Kadep">Kepala Departemen</option>
                     </select>

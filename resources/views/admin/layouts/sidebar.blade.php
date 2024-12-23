@@ -84,25 +84,25 @@
                 <div class="collapse" id="sidebarAkademik">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('kurikulum.manage') }}">Kurikulum</a>
+                            <a href="{{ route('kurikulum.index') }}">Kurikulum</a>
                         </li>
                         <li>
-                            <a href="{{ route('akreditasidepartemen.manage') }}">Akreditasi Departemen</a>
+                            <a href="{{ route('akreditasidepartemen.index') }}">Akreditasi Departemen</a>
                         </li>
                         <li>
                             <a href="{{ route('sop.index') }}">SOP</a>
                         </li>
                         <li>
-                            <a href="{{ route('sinopsismatkul.manage') }}">Distribusi Mata Kuliah</a>
+                            <a href="{{ route('sinopsismatkul.index') }}">Distribusi Mata Kuliah</a>
                         </li>
                         <li>
-                            <a href="{{ route('kalenderakademik.manage') }}">Kalender Akademik</a>
+                            <a href="{{ route('kalenderakademik.index') }}">Kalender Akademik</a>
                         </li>
                         <li>
                             <a href="{{ route('konsentrasipenjurusan.index') }}">Konsentrasi Penjurusan</a>
                         </li>
                         <li>
-                            <a href="{{ route('programsarjana.manage') }}">Program Sarjana</a>
+                            <a href="{{ route('programsarjana.index') }}">Program Sarjana</a>
                         </li>
                         <li>
                             <a href="{{ route('jurnal.index') }}">Jurnal</a>

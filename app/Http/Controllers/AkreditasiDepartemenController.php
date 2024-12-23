@@ -14,73 +14,59 @@ class AkreditasiDepartemenController extends MasterController
         $this->viewPath = 'admin.pages.akreditasidepartemen';
     }
 
-    public function create()
+    public function show($id)
     {
-        abort(404);
+        $akreditasi = AkreditasiDepartemen::find($id);
+        return view($this->viewPath . '.show', compact('akreditasi'));
     }
 
-    public function store(Request $request)
-    {
-        abort(404);
-    }
+    // public function manage()
+    // {
+    //     $dataAkreditasiDepartemen = AkreditasiDepartemen::first();
+    //     if ($dataAkreditasiDepartemen) {
+    //         return view('admin.pages.akreditasidepartemen.edit', compact('dataAkreditasiDepartemen'));
+    //     } else {
+    //         return view('admin.pages.akreditasidepartemen.create');
+    //     }
+    // }
 
-    public function update(Request $request, $id)
-    {
-        abort(404);
-    }
+    // public function manageStore(Request $request)
+    // {
+    //     $imagePath = 'akreditasidepartemen';
+    //     $validated = $request->validate($this->model::$rules);
+    //     if ($request->hasFile('image')) {
+    //         $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
+    //         $validated['image'] = $imageName;
+    //     }
+    //     $this->model::create($validated);
+    //     return redirect()->route('akreditasidepartemen.manage')->with('success', 'Data created successfully');
+    // }
 
-    public function destroy($id)
-    {
-        abort(404);
-    }
+    // public function edit($id)
+    // {
+    //     $dataAkreditasiDepartemen = AkreditasiDepartemen::findOrFail($id);
+    //     return view('admin.pages.akreditasidepartemen.edit', compact('dataAkreditasiDepartemen'));
+    // }
 
-    public function manage()
-    {
-        $dataAkreditasiDepartemen = AkreditasiDepartemen::first();
-        if ($dataAkreditasiDepartemen) {
-            return view('admin.pages.akreditasidepartemen.edit', compact('dataAkreditasiDepartemen'));
-        } else {
-            return view('admin.pages.akreditasidepartemen.create');
-        }
-    }
+    // public function manageUpdate(Request $request, $id)
+    // {
+    //     $dataAkreditasiDepartemen = AkreditasiDepartemen::findOrFail($id);
 
-    public function manageStore(Request $request)
-    {
-        $imagePath = 'akreditasidepartemen';
-        $validated = $request->validate($this->model::$rules);
-        if ($request->hasFile('image')) {
-            $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
-            $validated['image'] = $imageName;
-        }
-        $this->model::create($validated);
-        return redirect()->route('akreditasidepartemen.manage')->with('success', 'Data created successfully');
-    }
+    //     $validated = $request->validate($this->model::$rules);
 
-    public function edit($id)
-    {
-        $dataAkreditasiDepartemen = AkreditasiDepartemen::findOrFail($id);
-        return view('admin.pages.akreditasidepartemen.edit', compact('dataAkreditasiDepartemen'));
-    }
+    //     $imagePath = 'akreditasidepartemen';
 
-    public function manageUpdate(Request $request, $id)
-    {
-        $dataAkreditasiDepartemen = AkreditasiDepartemen::findOrFail($id);
+    //     if ($request->hasFile('image')) {
+    //         if ($dataAkreditasiDepartemen->image) {
+    //             GlobalFunction::deleteImage($dataAkreditasiDepartemen->image, $imagePath);
+    //         }
 
-        $validated = $request->validate($this->model::$rules);
+    //         $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
+    //         $validated['image'] = $imageName;
+    //     }
 
-        $imagePath = 'akreditasidepartemen';
+    //     $dataAkreditasiDepartemen->update($validated);
 
-        if ($request->hasFile('image')) {
-            if ($dataAkreditasiDepartemen->image) {
-                GlobalFunction::deleteImage($dataAkreditasiDepartemen->image, $imagePath);
-            }
-
-            $imageName = GlobalFunction::saveImage($request->file('image'), uniqid(), $imagePath);
-            $validated['image'] = $imageName;
-        }
-
-        $dataAkreditasiDepartemen->update($validated);
-
-        return redirect()->route('akreditasidepartemen.edit', $id)->with('success', 'Data updated successfully');
-    }
+    //     return redirect()->route('akreditasidepartemen.edit', $id)->with('success', 'Data updated successfully');
+    // }
 }

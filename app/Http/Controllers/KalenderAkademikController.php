@@ -14,73 +14,53 @@ class KalenderAkademikController extends MasterController
         $this->viewPath = 'admin.pages.kalenderakademik';
     }
 
-    public function create()
-    {
-        abort(404);
-    }
+    // public function manage()
+    // {
+    //     $dataKalenderAkademik = KalenderAkademik::first();
+    //     if ($dataKalenderAkademik) {
+    //         return view('admin.pages.kalenderakademik.edit', compact('dataKalenderAkademik'));
+    //     } else {
+    //         return view('admin.pages.kalenderakademik.create');
+    //     }
+    // }
 
-    public function store(Request $request)
-    {
-        abort(404);
-    }
+    // public function manageStore(Request $request)
+    // {
+    //     $pdfPath = 'kalenderakademik';
+    //     $validated = $request->validate($this->model::$rules);
+    //     if ($request->hasFile('pdf')) {
+    //         $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
+    //         $validated['pdf'] = $pdfName;
+    //     }
+    //     $this->model::create($validated);
+    //     return redirect()->route('kalenderakademik.manage')->with('success', 'Data created successfully');
+    // }
 
-    public function update(Request $request, $id)
-    {
-        abort(404);
-    }
+    // public function edit($id)
+    // {
+    //     $dataKalenderAkademik = KalenderAkademik::findOrFail($id);
+    //     return view('admin.pages.kalenderakademik.edit', compact('dataKalenderAkademik'));
+    // }
 
-    public function destroy($id)
-    {
-        abort(404);
-    }
+    // public function manageUpdate(Request $request, $id)
+    // {
+    //     $dataKalenderAkademik = KalenderAkademik::findOrFail($id);
 
-    public function manage()
-    {
-        $dataKalenderAkademik = KalenderAkademik::first();
-        if ($dataKalenderAkademik) {
-            return view('admin.pages.kalenderakademik.edit', compact('dataKalenderAkademik'));
-        } else {
-            return view('admin.pages.kalenderakademik.create');
-        }
-    }
+    //     $validated = $request->validate($this->model::$rules);
 
-    public function manageStore(Request $request)
-    {
-        $pdfPath = 'kalenderakademik';
-        $validated = $request->validate($this->model::$rules);
-        if ($request->hasFile('pdf')) {
-            $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
-            $validated['pdf'] = $pdfName;
-        }
-        $this->model::create($validated);
-        return redirect()->route('kalenderakademik.manage')->with('success', 'Data created successfully');
-    }
+    //     $pdfPath = 'kalenderakademik';
 
-    public function edit($id)
-    {
-        $dataKalenderAkademik = KalenderAkademik::findOrFail($id);
-        return view('admin.pages.kalenderakademik.edit', compact('dataKalenderAkademik'));
-    }
+    //     if ($request->hasFile('pdf')) {
+    //         if ($dataKalenderAkademik->pdf) {
+    //             GlobalFunction::deletePdf($dataKalenderAkademik->pdf, $pdfPath);
+    //         }
 
-    public function manageUpdate(Request $request, $id)
-    {
-        $dataKalenderAkademik = KalenderAkademik::findOrFail($id);
+    //         $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
+    //         $validated['pdf'] = $pdfName;
+    //     }
 
-        $validated = $request->validate($this->model::$rules);
+    //     $dataKalenderAkademik->update($validated);
 
-        $pdfPath = 'kalenderakademik';
-
-        if ($request->hasFile('pdf')) {
-            if ($dataKalenderAkademik->pdf) {
-                GlobalFunction::deletePdf($dataKalenderAkademik->pdf, $pdfPath);
-            }
-
-            $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
-            $validated['pdf'] = $pdfName;
-        }
-
-        $dataKalenderAkademik->update($validated);
-
-        return redirect()->route('kalenderakademik.edit', $id)->with('success', 'Data updated successfully');
-    }
+    //     return redirect()->route('kalenderakademik.edit', $id)->with('success', 'Data updated successfully');
+    // }
 }

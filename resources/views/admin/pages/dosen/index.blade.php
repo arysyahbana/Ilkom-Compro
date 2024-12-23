@@ -34,9 +34,17 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->nama ?? '' }}</td>
-                                            <td>{{ $item->nip ?? '' }}</td>
-                                            <td>{{ $item->nidn ?? '' }}</td>
-                                            <td>{{ $item->kategori ?? '' }}</td>
+                                            <td>{{ $item->nip ?? '-' }}</td>
+                                            <td>{{ $item->nidn ?? '-' }}</td>
+                                            <td>
+                                                @if ($item->kategori == 'Kadep')
+                                                    Kepala Departemen
+                                                @elseif($item->kategori == 'Staff')
+                                                    Staff Akademik
+                                                @else
+                                                    {{ $item->kategori ?? '' }}
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a href="#" class="btn" data-bs-toggle="modal"
                                                     data-bs-target="#detaildosen{{ $item->id }}">

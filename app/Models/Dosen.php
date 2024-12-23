@@ -35,8 +35,8 @@ class Dosen extends Model
         return [
             'nama' => 'required|string|max:255',
             'image' => $isUpdate ? 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' : 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'nip' => 'required|string|max:255',
-            'nidn' => 'required|string|max:255',
+            'nip' => 'nullable|string|max:255',
+            'nidn' => 'nullable|string|max:255',
             'tempat_lahir' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
             'pangkat_id' => 'required|exists:pangkats,id',

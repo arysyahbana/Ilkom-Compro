@@ -175,7 +175,8 @@
                     <div class="container" data-aos="fade-up">
                         <p style="color: #b92383">Cerita Departemen Ilmu Komunikasi</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h2 class="content-title mb-4" style="color: black; font-weight: bold">Berita</h2>
+                            <h2 class="content-title mb-4" style="color: black; font-weight: bold">Berita dan Peristiwa
+                            </h2>
                             <a href="{{ route('berita.berita') }}" class=""><u>Lihat Semua</u></a>
                         </div>
                     </div>
@@ -251,9 +252,10 @@
                         <a href="{{ route('berita.agendadetail', $dataAgenda->id ?? '') }}"
                             class="readmore stretched-link">
                             <div data-aos="fade-up" data-aos-delay="100">
-                                <div>
+                                <div class="overflow-hidden" style="max-height: 400px">
                                     <img src="{{ isset($dataAgenda->image) ? asset('dist/assets/img/agenda/' . $dataAgenda->image) : asset('dist_frontend/assets/img/img_sq_1.jpg') }}"
-                                        alt="" style="width: 100%" />
+                                        class="img-fluid img-thumbnail" alt="{{ $berita->judul ?? '' }}"
+                                        style="width: 100%; object-fit: cover" />
                                 </div>
                                 <div style="margin-top: 10px">
                                     <div style="display: flex; align-items: center; color: gray; font-size: 14px">

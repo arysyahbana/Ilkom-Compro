@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('image');
-            $table->string('nip');
-            $table->string('nidn');
+            $table->string('nip')->nullable();
+            $table->string('nidn')->nullable();
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->foreignId('pangkat_id')->constrained('pangkats')->onDelete('cascade');

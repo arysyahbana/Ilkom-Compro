@@ -67,11 +67,16 @@ Route::prefix('berita')->group(function () {
 });
 Route::prefix('akademik')->group(function () {
     Route::get('/kurikulum', [FrontendAkademikController::class, 'kurikulum'])->name('akademik.kurikulum');
+    Route::get('/kurikulum-detail/{id}', [FrontendAkademikController::class, 'kurikulum_detail'])->name('akademik.kurikulumdetail');
     Route::get('/akreditasi', [FrontendAkademikController::class, 'akreditasi'])->name('akademik.akreditasi');
+    Route::get('/akreditasi-detail/{id}', [FrontendAkademikController::class, 'akreditasi_detail'])->name('akademik.akreditasidetail');
     Route::get('/sop', [FrontendAkademikController::class, 'sop'])->name('akademik.sop');
     Route::get('/sop-detail/{id}', [FrontendAkademikController::class, 'sop_detail'])->name('akademik.sopdetail');
+    Route::get('/distribusi-matkul', [FrontendAkademikController::class, 'sinopsis_matkul'])->name('akademik.sinopsismatkul');
+    Route::get('/kalender-akademik', [FrontendAkademikController::class, 'kalender_akademik'])->name('akademik.kalenderakademik');
     Route::get('/konsentrasi-penjurusan', [FrontendAkademikController::class, 'konsentrasi_penjurusan'])->name('akademik.konsentrasi-penjurusan');
     Route::get('/program-sarjana', [FrontendAkademikController::class, 'program_sarjana'])->name('akademik.program-sarjana');
+    Route::get('/program-sarjana-detail/{id}', [FrontendAkademikController::class, 'program_sarjana_detail'])->name('akademik.programsarjanadetail');
     Route::get('/jurnal', [FrontendAkademikController::class, 'jurnal'])->name('akademik.jurnal');
     Route::get('/jurnal-detail/{id}', [FrontendAkademikController::class, 'jurnal_detail'])->name('akademik.jurnaldetail');
 });
@@ -97,18 +102,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/update-manage/{id}', [VisiMisiController::class, 'updateManage'])->name('visimisi.update.manage');
     });
     Route::prefix('kurikulum')->group(function () {
+        Route::get('/index', [KurikulumController::class, 'index'])->name('kurikulum.index');
+        Route::get('/show/{id}', [KurikulumController::class, 'show'])->name('kurikulum.show');
         Route::get('/create', [KurikulumController::class, 'create'])->name('kurikulum.create');
-        Route::post('/store', [KurikulumController::class, 'manageStore'])->name('kurikulum.store');
-        Route::get('/manage', [KurikulumController::class, 'manage'])->name('kurikulum.manage');
+        Route::post('/store', [KurikulumController::class, 'store'])->name('kurikulum.store');
         Route::get('/edit/{id}', [KurikulumController::class, 'edit'])->name('kurikulum.edit');
-        Route::put('/update-manage/{id}', [KurikulumController::class, 'manageUpdate'])->name('kurikulum.update.manage');
+        Route::put('/update/{id}', [KurikulumController::class, 'update'])->name('kurikulum.update');
+        Route::delete('/destroy/{id}', [KurikulumController::class, 'destroy'])->name('kurikulum.destroy');
     });
     Route::prefix('program-sarjana')->group(function () {
+        Route::get('/index', [ProgramSarjanaController::class, 'index'])->name('programsarjana.index');
+        Route::get('/show/{id}', [ProgramSarjanaController::class, 'show'])->name('programsarjana.show');
         Route::get('/create', [ProgramSarjanaController::class, 'create'])->name('programsarjana.create');
-        Route::post('/store', [ProgramSarjanaController::class, 'manageStore'])->name('programsarjana.store');
-        Route::get('/manage', [ProgramSarjanaController::class, 'manage'])->name('programsarjana.manage');
+        Route::post('/store', [ProgramSarjanaController::class, 'store'])->name('programsarjana.store');
         Route::get('/edit/{id}', [ProgramSarjanaController::class, 'edit'])->name('programsarjana.edit');
-        Route::put('/update-manage/{id}', [ProgramSarjanaController::class, 'manageUpdate'])->name('programsarjana.update.manage');
+        Route::put('/update/{id}', [ProgramSarjanaController::class, 'update'])->name('programsarjana.update');
+        Route::delete('/destroy/{id}', [ProgramSarjanaController::class, 'destroy'])->name('programsarjana.destroy');
     });
     Route::prefix('konsentrasi-penjurusan')->group(function () {
         Route::get('/index', [KonsentrasiPenjurusanController::class, 'index'])->name('konsentrasipenjurusan.index');
@@ -211,25 +220,29 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/destroy/{id}', [KemahasiswaanController::class, 'destroy'])->name('kemahasiswaan.destroy');
     });
     Route::prefix('akreditasi-departemen')->group(function () {
+        Route::get('/index', [AkreditasiDepartemenController::class, 'index'])->name('akreditasidepartemen.index');
+        Route::get('/show/{id}', [AkreditasiDepartemenController::class, 'show'])->name('akreditasidepartemen.show');
         Route::get('/create', [AkreditasiDepartemenController::class, 'create'])->name('akreditasidepartemen.create');
-        Route::post('/store', [AkreditasiDepartemenController::class, 'manageStore'])->name('akreditasidepartemen.store');
-        Route::get('/manage', [AkreditasiDepartemenController::class, 'manage'])->name('akreditasidepartemen.manage');
+        Route::post('/store', [AkreditasiDepartemenController::class, 'store'])->name('akreditasidepartemen.store');
         Route::get('/edit/{id}', [AkreditasiDepartemenController::class, 'edit'])->name('akreditasidepartemen.edit');
-        Route::put('/update-manage/{id}', [AkreditasiDepartemenController::class, 'manageUpdate'])->name('akreditasidepartemen.update.manage');
+        Route::put('/update/{id}', [AkreditasiDepartemenController::class, 'update'])->name('akreditasidepartemen.update');
+        Route::delete('/destroy/{id}', [AkreditasiDepartemenController::class, 'destroy'])->name('akreditasidepartemen.destroy');
     });
     Route::prefix('sinopsis-matkul')->group(function () {
+        Route::get('/index', [SinopsisMatkulController::class, 'index'])->name('sinopsismatkul.index');
         Route::get('/create', [SinopsisMatkulController::class, 'create'])->name('sinopsismatkul.create');
-        Route::post('/store', [SinopsisMatkulController::class, 'manageStore'])->name('sinopsismatkul.store');
-        Route::get('/manage', [SinopsisMatkulController::class, 'manage'])->name('sinopsismatkul.manage');
+        Route::post('/store', [SinopsisMatkulController::class, 'store'])->name('sinopsismatkul.store');
         Route::get('/edit/{id}', [SinopsisMatkulController::class, 'edit'])->name('sinopsismatkul.edit');
-        Route::put('/update-manage/{id}', [SinopsisMatkulController::class, 'manageUpdate'])->name('sinopsismatkul.update.manage');
+        Route::put('/update/{id}', [SinopsisMatkulController::class, 'update'])->name('sinopsismatkul.update');
+        Route::delete('/destroy/{id}', [SinopsisMatkulController::class, 'destroy'])->name('sinopsismatkul.destroy');
     });
     Route::prefix('kalender-akademik')->group(function () {
+        Route::get('/index', [KalenderAkademikController::class, 'index'])->name('kalenderakademik.index');
         Route::get('/create', [KalenderAkademikController::class, 'create'])->name('kalenderakademik.create');
-        Route::post('/store', [KalenderAkademikController::class, 'manageStore'])->name('kalenderakademik.store');
-        Route::get('/manage', [KalenderAkademikController::class, 'manage'])->name('kalenderakademik.manage');
+        Route::post('/store', [KalenderAkademikController::class, 'store'])->name('kalenderakademik.store');
         Route::get('/edit/{id}', [KalenderAkademikController::class, 'edit'])->name('kalenderakademik.edit');
-        Route::put('/update-manage/{id}', [KalenderAkademikController::class, 'manageUpdate'])->name('kalenderakademik.update.manage');
+        Route::put('/update/{id}', [KalenderAkademikController::class, 'update'])->name('kalenderakademik.update');
+        Route::delete('/destroy/{id}', [KalenderAkademikController::class, 'destroy'])->name('kalenderakademik.destroy');
     });
     Route::prefix('pengumuman')->group(function () {
         Route::get('/index', [PengumumanController::class, 'index'])->name('pengumuman.index');

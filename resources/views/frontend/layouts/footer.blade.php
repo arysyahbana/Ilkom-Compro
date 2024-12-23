@@ -19,9 +19,11 @@
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Contact us</h4>
                     <ul>
-                        <li><a href="#">+62-751-71266</a></li>
-                        <li><a href="#">officialkomunikasiunand@gmail.com</a></li>
-                        <li><a href="#">+62-751-71266</a></li>
+                        <li><a href="https://www.youtube.com/@komunikasiunand" target="_blank">Ranah
+                                Komunikasi</a></li>
+                        <li><a href="https://www.instagram.com/officialkomunikasiunand?igsh=NXVzOW53a2lmd29z"
+                                target="_blank">@officialkomunikasiunand</a>
+                        </li>
                     </ul>
                 </div>
 

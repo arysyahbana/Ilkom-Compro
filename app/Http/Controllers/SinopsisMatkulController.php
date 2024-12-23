@@ -14,73 +14,53 @@ class SinopsisMatkulController extends MasterController
         $this->viewPath = 'admin.pages.sinopsismatkul';
     }
 
-    public function create()
-    {
-        abort(404);
-    }
+    // public function manage()
+    // {
+    //     $dataSinopsisMatkul = SinopsisMatkul::first();
+    //     if ($dataSinopsisMatkul) {
+    //         return view('admin.pages.sinopsismatkul.edit', compact('dataSinopsisMatkul'));
+    //     } else {
+    //         return view('admin.pages.sinopsismatkul.create');
+    //     }
+    // }
 
-    public function store(Request $request)
-    {
-        abort(404);
-    }
+    // public function manageStore(Request $request)
+    // {
+    //     $pdfPath = 'sinopsismatkul';
+    //     $validated = $request->validate($this->model::$rules);
+    //     if ($request->hasFile('pdf')) {
+    //         $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
+    //         $validated['pdf'] = $pdfName;
+    //     }
+    //     $this->model::create($validated);
+    //     return redirect()->route('sinopsismatkul.manage')->with('success', 'Data created successfully');
+    // }
 
-    public function update(Request $request, $id)
-    {
-        abort(404);
-    }
+    // public function edit($id)
+    // {
+    //     $dataSinopsisMatkul = SinopsisMatkul::findOrFail($id);
+    //     return view('admin.pages.sinopsismatkul.edit', compact('dataSinopsisMatkul'));
+    // }
 
-    public function destroy($id)
-    {
-        abort(404);
-    }
+    // public function manageUpdate(Request $request, $id)
+    // {
+    //     $dataSinopsisMatkul = SinopsisMatkul::findOrFail($id);
 
-    public function manage()
-    {
-        $dataSinopsisMatkul = SinopsisMatkul::first();
-        if ($dataSinopsisMatkul) {
-            return view('admin.pages.sinopsismatkul.edit', compact('dataSinopsisMatkul'));
-        } else {
-            return view('admin.pages.sinopsismatkul.create');
-        }
-    }
+    //     $validated = $request->validate($this->model::$rules);
 
-    public function manageStore(Request $request)
-    {
-        $pdfPath = 'sinopsismatkul';
-        $validated = $request->validate($this->model::$rules);
-        if ($request->hasFile('pdf')) {
-            $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
-            $validated['pdf'] = $pdfName;
-        }
-        $this->model::create($validated);
-        return redirect()->route('sinopsismatkul.manage')->with('success', 'Data created successfully');
-    }
+    //     $pdfPath = 'sinopsismatkul';
 
-    public function edit($id)
-    {
-        $dataSinopsisMatkul = SinopsisMatkul::findOrFail($id);
-        return view('admin.pages.sinopsismatkul.edit', compact('dataSinopsisMatkul'));
-    }
+    //     if ($request->hasFile('pdf')) {
+    //         if ($dataSinopsisMatkul->pdf) {
+    //             GlobalFunction::deletePdf($dataSinopsisMatkul->pdf, $pdfPath);
+    //         }
 
-    public function manageUpdate(Request $request, $id)
-    {
-        $dataSinopsisMatkul = SinopsisMatkul::findOrFail($id);
+    //         $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
+    //         $validated['pdf'] = $pdfName;
+    //     }
 
-        $validated = $request->validate($this->model::$rules);
+    //     $dataSinopsisMatkul->update($validated);
 
-        $pdfPath = 'sinopsismatkul';
-
-        if ($request->hasFile('pdf')) {
-            if ($dataSinopsisMatkul->pdf) {
-                GlobalFunction::deletePdf($dataSinopsisMatkul->pdf, $pdfPath);
-            }
-
-            $pdfName = GlobalFunction::savePdf($request->file('pdf'), uniqid(), $pdfPath);
-            $validated['pdf'] = $pdfName;
-        }
-
-        $dataSinopsisMatkul->update($validated);
-
-        return redirect()->route('sinopsismatkul.edit', $id)->with('success', 'Data updated successfully');
-    }
+    //     return redirect()->route('sinopsismatkul.edit', $id)->with('success', 'Data updated successfully');
+    // }
 }

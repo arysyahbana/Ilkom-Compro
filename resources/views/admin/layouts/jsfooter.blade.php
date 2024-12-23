@@ -65,6 +65,13 @@
 
 <script>
     ClassicEditor
+        .create(document.querySelector('#isi_halaman'), {
+            height: '1000px'
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    ClassicEditor
         .create(document.querySelector('#editor-visi'), {
             height: '1000px'
         })

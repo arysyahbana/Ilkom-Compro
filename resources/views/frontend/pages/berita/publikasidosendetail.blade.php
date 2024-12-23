@@ -26,9 +26,6 @@
                                             href="{{ route('berita.publikasidetail', $dataPublikasi->id) }}"><time
                                                 datetime="2020-01-01">{{ $dataPublikasi->created_at ? \Carbon\Carbon::parse($dataPublikasi->created_at)->translatedFormat('l, d F Y') : '' }}</time></a>
                                     </li>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                            href="{{ route('berita.publikasidetail', $dataPublikasi->id) }}">12 Comments</a>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="post-img mt-3">

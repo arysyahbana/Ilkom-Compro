@@ -5,7 +5,7 @@
     <div class="page-title dark-background" data-aos="fade"
         style="background-image: url(/dist_frontend/assets/img/page-title-bg.webp)">
         <div class="container position-relative">
-            <h2 style="font-weight: bold">Program Sarjana Departemen Ilmu Komunikasi</h2>
+            <h2 style="font-weight: bold">Distribusi Mata Kuliah</h2>
         </div>
     </div>
     <!-- End Page Title -->
@@ -19,7 +19,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" style="background-color: #47245c; color: white">No</th>
-                                <th scope="col" style="background-color: #47245c; color: white">Program Sarjana</th>
+                                <th scope="col" style="background-color: #47245c; color: white">Judul</th>
                                 <th scope="col" style="background-color: #47245c; color: white">Detail</th>
                             </tr>
                         </thead>
@@ -28,7 +28,11 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->judul ?? '' }}</td>
-                                    <td><a href="{{ route('akademik.programsarjanadetail', $item->id) }}">Buka disini</a>
+                                    <td>
+                                        <a href="{{ isset($item) && $item->pdf ? asset('dist/assets/pdf/sinopsismatkul/' . $item->pdf) : '#' }}"
+                                            target="{{ isset($item) && $item->pdf ? '_blank' : '' }}">
+                                            Buka Disini
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
