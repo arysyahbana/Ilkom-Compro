@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 justify-content-center">
-                    <table class="table">
+                    <table class="table" id="akademik">
                         <thead>
                             <tr>
                                 <th scope="col" style="background-color: #47245c; color: white">No</th>

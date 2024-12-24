@@ -14,3 +14,7 @@
 
  <!-- Main JS File -->
  <script src="{{ asset('dist_frontend/assets/js/main.js') }}"></script>
+
+ <script>
+     let table = new DataTable('#akademik');
+ </script>

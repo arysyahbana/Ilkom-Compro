@@ -7,3 +7,7 @@
 
  <!-- Main CSS File -->
  <link href="{{ asset('dist_frontend/assets/css/main.css') }}" rel="stylesheet" />
+
+ <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
