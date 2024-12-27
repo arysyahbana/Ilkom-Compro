@@ -35,6 +35,7 @@ use App\Http\Controllers\SubKemahasiswaanController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\UnduhanController;
 use App\Http\Controllers\VisiMisiController;
+use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -93,6 +94,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('admin.pages.dashboard.index');
     // })->name('dashboard');
+
+    Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
 
     Route::prefix('visi-misi')->group(function () {
         Route::get('/index', [VisiMisiController::class, 'index'])->name('visimisi.index');

@@ -40,6 +40,9 @@
                         <li>
                             <a href="{{ route('galeriilkom.index') }}">Galeri Ilmu Komunikasi</a>
                         </li>
+                        <li>
+                            <a href="{{ route('visitors.index') }}">Jumlah Pengunjung</a>
+                        </li>
                     </ul>
                 </div>
             </li>

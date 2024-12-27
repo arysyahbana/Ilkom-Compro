@@ -241,6 +241,11 @@
                         <i class="uil-home fs-3"></i>
                         <span class="pt-1">Data Fakultas</span>
                     </div>
+                @elseif (Route::is('visitors.*'))
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="uil-home fs-3"></i>
+                        <span class="pt-1">Jumlah Pengunjung</span>
+                    </div>
                 @elseif (Route::is('tentang.*'))
                     <div class="d-flex align-items-center gap-1">
                         <i class="uil-info-circle fs-3"></i>
