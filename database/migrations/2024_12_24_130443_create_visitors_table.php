@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('ip')->unique();
             $table->string('country')->nullable();
+            $table->string('country_code')->nullable();
             $table->string('city')->nullable();
             $table->timestamps();
         });

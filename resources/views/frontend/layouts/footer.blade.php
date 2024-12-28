@@ -12,7 +12,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-md-3 footer-links"></div>
+                {{-- <div class="col-lg-2 col-md-3 footer-links"></div> --}}
 
                 <div class="col-lg-2 col-md-3 footer-links"></div>
 
@@ -28,22 +28,34 @@
                 </div>
 
                 <div class="col-lg-2 col-md-3 footer-links"></div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Visitors</h4>
+                    <div class="row">
+                        @foreach ($visitors as $visitor)
+                            <div class="col-6 mb-2">
+                                <div class="d-flex gap-2">
+                                    <div class="">
+                                        <img src="https://flagcdn.com/w40/{{ $visitor->country_code ?? '?' }}.png"
+                                            alt="{{ $visitor->country ?? '?' }}" class="me-2"
+                                            style="width: 30px; height: 20px; object-fit: cover; border-radius: 2px;">
+                                    </div>
+                                    <div class="">
+                                        {{ $visitor->total ?? '' }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="copyright text-center">
-        <div
-            class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
-            <div class="d-flex flex-column align-items-center align-items-lg-start">
-                <div>
-                    © Copyright <strong><span>Departemen Ilmu Komunikasi Universitas Andalas</span></strong>. All
-                    Rights Reserved
-                </div>
-                <!-- <div class="credits">
-              Designed by <a href="https://metrosoftware.id">PT. Metro Indonesian Software</a>
-            </div>       -->
-            </div>
+        <div class="text-center">
+            © Copyright <strong><span>Departemen Ilmu Komunikasi Universitas Andalas</span></strong>. All
+            Rights Reserved
         </div>
     </div>
 </footer>

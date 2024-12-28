@@ -20,18 +20,21 @@ class LogVisitorMiddleware
     public function handle(Request $request, Closure $next)
     {
         $ip = $request->ip();
+        // $ip = env('APP_ENV') === 'local' ? '36.73.88.3' : $request->ip();
 
         // API untuk mendapatkan informasi lokasi berdasarkan IP
         $geoData = Http::get("http://ip-api.com/json/{$ip}")->json();
 
-        $country = $geoData['country'] ?? 'Unknown';
-        $city = $geoData['city'] ?? 'Unknown';
+        $country = $geoData['country'] ?? '?';
+        $countryCode = $geoData['countryCode'] ?? '?';
+        $city = $geoData['city'] ?? '?';
 
         // Simpan atau perbarui data di tabel
         DB::table('visitors')->updateOrInsert(
             ['ip' => $ip],
             [
                 'country' => $country,
+                'country_code' => strtolower($countryCode),
                 'city' => $city,
                 'updated_at' => now(), // Perbarui waktu terakhir kunjungan
                 'created_at' => DB::raw('IFNULL(created_at, NOW())') // Tetap gunakan created_at yang lama jika sudah ada

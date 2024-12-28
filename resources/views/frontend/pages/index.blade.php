@@ -7,12 +7,39 @@
             word-break: break-word;
             white-space: normal;
         }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* Rasio 16:9 */
+            overflow: hidden;
+            background-color: black;
+            /* Opsional, untuk memastikan latar belakang hitam */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
         <div id="hero-carousel" class="carousel slide carousel-fade">
             <div class="carousel-item active">
-                <img src="{{ asset('dist_frontend/assets/img/hero_1.jpg') }}" alt="" />
+                <div class="video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/P54QwJt4dC8?si=HhItTQq_70UYOqbN&autoplay=1&mute=1&loop=1&playlist=P54QwJt4dC8&controls=0&modestbranding=1&rel=0"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
                 <div class="carousel-container justify-content-center text-center">
                     <img src="{{ asset('dist_frontend/assets/img/unand.png') }}" class="logo-unand"
                         style="width: 100px; height: 100px; display: block; margin: 0 auto" alt="Image" />
@@ -20,7 +47,6 @@
                     <h3>Universitas Andalas</h3>
                 </div>
             </div>
-            <!-- End Carousel Item -->
         </div>
     </section>
     <!-- /Hero Section -->

@@ -96,6 +96,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // })->name('dashboard');
 
     Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
+    Route::delete('/visitors/reset', [VisitorController::class, 'destroy'])->name('visitors.reset');
 
     Route::prefix('visi-misi')->group(function () {
         Route::get('/index', [VisiMisiController::class, 'index'])->name('visimisi.index');

@@ -11,11 +11,18 @@ class VisitorController extends Controller
     public function index()
     {
         $visitors = DB::table('visitors')
-            ->select('ip', 'city', 'country', DB::raw('count(*) as total'))
-            ->groupBy('ip', 'city', 'country')
+            ->select('country', 'country_code', DB::raw('count(*) as total'))
+            ->groupBy('country', 'country_code')
             ->orderByDesc('total')
             ->get();
 
+
         return view('admin.pages.visitors.index', compact('visitors'));
+    }
+
+    public function destroy()
+    {
+        DB::table('visitors')->truncate(); // Menghapus semua data dari tabel
+        return redirect()->route('visitors.index')->with('success', 'Semua data pengunjung berhasil dihapus.');
     }
 }
