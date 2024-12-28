@@ -33,18 +33,21 @@
                     <h4>Visitors</h4>
                     <div class="row">
                         @foreach ($visitors as $visitor)
-                            <div class="col-6 mb-2">
-                                <div class="d-flex gap-2">
-                                    <div class="">
-                                        <img src="https://flagcdn.com/w40/{{ $visitor->country_code ?? '?' }}.png"
-                                            alt="{{ $visitor->country ?? '?' }}" class="me-2"
-                                            style="width: 30px; height: 20px; object-fit: cover; border-radius: 2px;">
-                                    </div>
-                                    <div class="">
-                                        {{ $visitor->total ?? '' }}
+                            @if ($visitor->country == '?')
+                            @else
+                                <div class="col-6 mb-2">
+                                    <div class="d-flex gap-2">
+                                        <div class="">
+                                            <img src="https://flagcdn.com/w40/{{ $visitor->country_code ?? '?' }}.png"
+                                                alt="{{ $visitor->country ?? '?' }}" class="me-2"
+                                                style="width: 30px; height: 20px; object-fit: cover; border-radius: 2px;">
+                                        </div>
+                                        <div class="">
+                                            {{ $visitor->total ?? '' }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
