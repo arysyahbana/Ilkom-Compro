@@ -43,7 +43,7 @@
                             <div data-bs-toggle="modal" data-bs-target="#editgambar{{ $item->id }}"
                                 class="card shadow position-relative z-1 card-hover"
                                 style="max-height: 250px; overflow: hidden; border-radius: 0.9rem;">
-                                <img src="{{ asset('dist/assets/img/Galeriilkom/' . $item->image) }}"
+                                <img src="{{ asset('dist/assets/img/galeriilkom/' . $item->image) }}"
                                     alt="{{ $item->image ?? '' }}" class="card-img-top img-fluid"
                                     style="object-fit: cover; min-height: 250px">
                             </div>
