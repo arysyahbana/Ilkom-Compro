@@ -34,9 +34,7 @@
                             </div>
                             <div class="content">
                                 <p style="text-align: justify; padding-bottom: 10px">
-                                    Padang,
-                                    {{ $dataAgenda->created_at ? \Carbon\Carbon::parse($dataAgenda->created_at)->translatedFormat('d F Y') : '' }}
-                                    – {{ $dataAgenda->isi_halaman ?? '' }}
+                                    {!! $dataAgenda->isi_halaman ?? '' !!}
                                 </p>
                             </div>
                             <!-- End post content -->

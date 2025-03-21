@@ -43,9 +43,9 @@
                                                 style="color: black; font-size: 20px; margin-top: 5px; font-weight: bold">
                                                 {{ $agenda->judul ?? '' }}
                                             </h3>
-                                            <p class="text-wrap">Padang,
-                                                {{ $agenda->created_at ? \Carbon\Carbon::parse($agenda->created_at)->translatedFormat('l, d F Y') : '' }}
-                                                - {{ $agenda->isi_halaman ?? '' }}</p>
+                                            <p class="text-wrap">
+                                                {!! \Illuminate\Support\Str::limit($agenda->isi_halaman ?? '', 200, '...') !!}
+                                            </p>
                                         </div>
                                     </div>
                                 </a>

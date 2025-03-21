@@ -44,7 +44,7 @@
                                 <p style="text-align: justify; padding-bottom: 10px">
                                     Padang,
                                     {{ $dataBerita->created_at ? \Carbon\Carbon::parse($dataBerita->created_at)->translatedFormat('d F Y') : '' }}
-                                    – {{ $dataBerita->isi_halaman ?? '' }}
+                                    {!! $dataBerita->isi_halaman ?? '' !!}
                                 </p>
                             </div>
                             <!-- End post content -->

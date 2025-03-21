@@ -34,9 +34,7 @@
                             </div>
                             <div class="content">
                                 <p style="text-align: justify; padding-bottom: 10px">
-                                    Padang,
-                                    {{ $dataPublikasi->created_at ? \Carbon\Carbon::parse($dataPublikasi->created_at)->translatedFormat('d F Y') : '' }}
-                                    – {{ $dataPublikasi->isi_halaman ?? '' }}
+                                    {!! $dataPublikasi->isi_halaman ?? '' !!}
                                 </p>
                             </div>
                             <!-- End post content -->

@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <p style="text-align: justify; color: #343434">
-                        {{ $dataStruktur->isi_halaman ?? '' }}
+                        {!! $dataStruktur->isi_halaman ?? '' !!}
                     </p>
                     <span>Link : </span><a href="{{ $dataStruktur->link ?? '' }}">{{ $dataStruktur->judul ?? '' }}</a>
                 </div>

@@ -92,10 +92,9 @@
                                             <h3 style="color: black; font-size: 20px; margin-top: 5px; font-weight: bold">
                                                 {{ $berita8->judul ?? '' }}
                                             </h3>
-                                            <p>Padang,
-                                                {{ \Carbon\Carbon::parse($berita8->created_at)->translatedFormat('d F Y') }}
-                                                -
-                                                {{ \Illuminate\Support\Str::limit($berita8->isi_halaman ?? '', 200, '...') }}
+                                            <p>
+                                                {!! \Illuminate\Support\Str::limit($berita8->isi_halaman ?? '', 200, '...') !!}
+                                            </p>
                                         </div>
                                     </div>
                                 </a>
@@ -120,7 +119,7 @@
                                         {{ $video && $video->created_at ? \Carbon\Carbon::parse($video->created_at)->translatedFormat('d F Y') : '' }}
                                     </p>
                                     <h5 class="text-wrap" style="font-size: 14px; color: black; margin: 5px 0">
-                                        {{ \Illuminate\Support\Str::limit($video->isi_halaman ?? '', 30, '...') }}</h5>
+                                        {!! \Illuminate\Support\Str::limit($video->isi_halaman ?? '', 30, '...') !!}</h5>
                                 </div>
                             </div>
                         </a>

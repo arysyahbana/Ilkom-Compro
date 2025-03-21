@@ -32,9 +32,7 @@
                             </div>
                             <div class="content">
                                 <p style="text-align: justify; padding-bottom: 10px">
-                                    Padang,
-                                    {{ $item->created_at ? \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') : '' }}
-                                    – {{ $item->isi_halaman ?? '' }}
+                                    {!! $item->isi_halaman ?? '' !!}
                                 </p>
                                 <p>Link : <a href="{{ $item->link ?? '' }}" target="_blank">{{ $item->judul ?? '' }}</a></p>
                             </div>
